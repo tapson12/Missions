@@ -16,7 +16,6 @@ class CreateTypeVehiculesTable extends Migration
         Schema::create('type_vehicules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string("libelletypevehicule");
-
             $table->string("created_by");
             $table->string("update_by");
             $table->timestamps();
