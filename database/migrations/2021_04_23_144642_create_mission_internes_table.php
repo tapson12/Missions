@@ -19,7 +19,6 @@ class CreateMissionInternesTable extends Migration
             $table->bigInteger('agent_id');
             $table->bigInteger('lieumission_id');
             $table->bigInteger('vehicule_id');
-            $table->bigInteger('sourcefinancement_id');
             $table->string('objet');
 
             $table->date('datedepart')->nullable();
@@ -31,8 +30,8 @@ class CreateMissionInternesTable extends Migration
             $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
             $table->foreign('lieumission_id')->references('id')->on('lieu_missions')->onDelete('cascade');
             $table->foreign('vehicule_id')->references('id')->on('vehicules')->onDelete('cascade');
-            $table->foreign('sourcefinancement_id')->references('id')->on('source_financements')->onDelete('cascade');
-
+            $table->string('hebergement');
+            $table->string('logement');
             $table->string("created_by");
             $table->string("update_by");
             $table->timestamps();
