@@ -30,4 +30,16 @@ class Structure extends Model
     {
         return $this->belongsTo(TypeStructure::class, 'type_structure_id');
     }
+
+    public function structures()
+    {
+        return $this->hasMany(Structure::class);
+    }
+
+    public function childrenStructures()
+    {
+        return $this->hasMany(Structure::class)->with('structures');
+    }
+
+
 }

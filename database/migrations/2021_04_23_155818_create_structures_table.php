@@ -16,6 +16,7 @@ class CreateStructuresTable extends Migration
         Schema::create('structures', function (Blueprint $table) {
            $table->bigIncrements('id');
            $table->bigInteger('type_structure_id');
+           $table->bigInteger('structure_id')->nullable();
            $table->string('libellestructure', 255);
            $table->boolean('type')->nullable()->default(false);
            $table->string('profil', 255)->nullable()->default('text');
