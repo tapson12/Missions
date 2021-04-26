@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-  @if($errors->first('libelleRegion')=='validation.required')
+  @if($errors->first('libellestructure')=='validation.required')
   <div class="row">
     <div class="col-12">
       <div class="alert alert-danger alert-dismissible">
@@ -47,7 +47,7 @@
                       
                         <div class="modal fade" id="{{'modifier'.$type->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
-                            <form action="{{url('/update-region')}}" method="POST">
+                            <form action="{{url('/update-type-structure')}}" method="POST">
                               @csrf
                             <div class="modal-content">
                               <div class="modal-header modal-header-designed">
@@ -67,7 +67,17 @@
                                       <div class="form-group">
                                         <label for="">Region</label>
                                         <input type="text" value="{{$type->libellestructure}}" name="libellestructure" id="" class="form-control" placeholder="type de structutre" aria-describedby="helpId" required/>
-                                        <small id="helpId" class="text-muted" ><span style="color: red">le nom de la region est obligatoire</span></small>
+                                        <small id="helpId" class="text-muted" ><span style="color: red">Le libelle de type structure est obligatoire</span></small>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="form-group">
+                                        <label for="">Niveau</label>
+                                        <input type="text" value="{{$type->niveau}}" name="niveau" id="" class="form-control" placeholder="Le niveau" aria-describedby="helpId" required>
+                                        <small id="helpId" class="text-muted" ><span style="color: red">le niveau de la structure est obligatoire</span></small>
                                       </div>
                                     </div>
                                   </div>
@@ -104,7 +114,7 @@
                       <div class="row">
                         <div class="col-lg-12 col-sm-12  col-md-12">
                           <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
-                          <a href="{{url('/delete-region/'.$region->id)}}" class="btn btn-danger">supprimer <i class="fa fa-trash" style="color: white"></i></a>
+                          <a href="{{url('/delete-type-structure/'.$type->id)}}" class="btn btn-danger">supprimer <i class="fa fa-trash" style="color: white"></i></a>
                         </div>
                       </div>
                    </div>
@@ -135,7 +145,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form action="{{url('/save-region')}}" method="POST">
+    <form action="{{url('/save-type-structure')}}" method="POST">
       @csrf
     <div class="modal-content">
       <div class="modal-header modal-header-designed">
@@ -149,9 +159,19 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="">Region</label>
+                <label for="">Type structure</label>
                 <input type="text" name="libellestructure" id="" class="form-control" placeholder="type de strucutre" aria-describedby="helpId" required>
-                <small id="helpId" class="text-muted" ><span style="color: red">le nom de la region est obligatoire</span></small>
+                <small id="helpId" class="text-muted" ><span style="color: red">le libelle type structure est obligatoire</span></small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="">Niveau</label>
+                <input type="text" name="niveau" id="" class="form-control" placeholder="Le niveau" aria-describedby="helpId" required>
+                <small id="helpId" class="text-muted" ><span style="color: red">le niveau de la structure est obligatoire</span></small>
               </div>
             </div>
           </div>
@@ -159,7 +179,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></button>
-        <button type="submit" class="btn btn-primary">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></button>
+        <button type="submit" class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></button>
       </div>
     </div>
   </form>

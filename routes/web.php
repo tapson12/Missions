@@ -21,7 +21,9 @@ Route::get('/parametrage', function () {
 });
 
 Route::get('/type-structure',[App\Http\Controllers\TypeStructureController::class, 'index']);
-
+Route::post('/save-type-structure',[App\Http\Controllers\TypeStructureController::class, 'store']);
+Route::post('/update-type-structure',[App\Http\Controllers\TypeStructureController::class, 'edit']);
+Route::get('/delete-type-structure/{id}',[App\Http\Controllers\TypeStructureController::class, 'destroy']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
