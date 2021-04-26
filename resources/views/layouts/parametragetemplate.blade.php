@@ -67,7 +67,16 @@
             <a class="dropdown-item" href="{{url('/centre-formation')}}">Affectations</a>
           </div>
         </li>
-        
+        <li class="nav-item dropdown">
+          <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <i class="fa fa-home fa-2x icon_color"></i> Decoupage administratif
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{url('/formateurs')}}">Region</a>
+            <a class="dropdown-item" href="{{url('/apprenants')}}">Province</a>
+            <a class="dropdown-item" href="{{ url('formations') }}">Commune</a>
+          </div>
+        </li>
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fa fa-users fa-2x icon_color"></i> Paramètrage utilisateurs
