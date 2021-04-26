@@ -25,11 +25,13 @@
                 </div>
             </div>
             <div class="row" style="margin-top: 5%;">
-                <div class="col-6">
-                    <a href="#">
-                        <i class="fa fa-question-circle fa-3x"></i><br>
-                        <span align='center'>Ouvrir le fichier <br> d aide</span>
+                <div class="col-6">           
+                
+                    <a  href="{{url('/parametrage')}}">
+                        <i class="fas fa-user-cog fa-4x"></i>
                     </a>
+                   
+             
                 </div>
             </div>
             <div class="row" style="margin-top: 15%;">
@@ -88,9 +90,10 @@
            <span  style="font-size: 0.5cm;font-weight: bold;">MINISTERE DE LAGRICULTURE ET DES AMENAGEMENT HYDRO-AGRICOLE ET DE LA MECANISATION</span>
        </div>
        <div class="col-1" style="margin-top: 1%">
-        <a href="#">
-           <i class="fas fa-user-cog fa-4x"></i>
-        </a>
+        
+
+      
+
     </div>
        <div class="col-1" style="margin-top: 1%">
            <a href="#">
