@@ -9,29 +9,29 @@
     </style>
     <div class="row">
         <div class="col-7" style="margin-left: -50%">
-            <strong style="font-size: 0.7cm;color:#A0351E;" >Système de gestion des Biens du MAAH</strong>
+            <strong style="font-size: 0.7cm;color:#A0351E;" >Système de gestion des Biens du MAAHM</strong>
         </div>
         <div class="col-2" style="margin-left: 75%">
             <img src="{{asset('/img/logo_dsi.png')}}" alt="">
         </div>
     </div>
-  
+
     <div class="row" style="margin-left: -45%; margin-top: 5%;">
         <div class="col-4">
             <div class="row">
                 <div class="col-6">
                   <a href="#"> <img src="{{asset('/img/keys.png')}}" alt=""><br><span>Changer votre <br> mot de passe</span></a>
-                  
+
                 </div>
             </div>
             <div class="row" style="margin-top: 5%;">
-                <div class="col-6">           
-                
+                <div class="col-6">
+
                     <a  href="{{url('/parametrage')}}">
                         <i class="fas fa-user-cog fa-4x"></i>
                     </a>
-                   
-             
+
+
                 </div>
             </div>
             <div class="row" style="margin-top: 15%;">
@@ -87,12 +87,12 @@
            <img src="{{asset('/img/logo.jpg')}}" alt="">
        </div>
        <div class="col-9" style="margin-top: 2%;">
-           <span  style="font-size: 0.5cm;font-weight: bold;">MINISTERE DE LAGRICULTURE ET DES AMENAGEMENT HYDRO-AGRICOLE ET DE LA MECANISATION</span>
+           <span  style="font-size: 0.5cm;font-weight: bold;">MINISTERE DE LAGRICULTURE ET DES AMENAGEMENTS HYDRO-AGRICOLES ET DE LA MECANISATION</span>
        </div>
        <div class="col-1" style="margin-top: 1%">
-        
 
-      
+
+
 
     </div>
        <div class="col-1" style="margin-top: 1%">
@@ -100,7 +100,7 @@
                <img src="{{asset('/img/password.png')}}" alt="">
            </a>
        </div>
-     
+
    </div>
 
 </div>

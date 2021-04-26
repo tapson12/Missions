@@ -22,6 +22,20 @@ Route::get('/parametrage', function () {
 
 Route::get('/type-structure',[App\Http\Controllers\TypeStructureController::class, 'index']);
 
+
+
+
+
+Route::get('/type-agent',[App\Http\Controllers\TypeAgentController::class, 'index']);
+
+
+
+Route::get('/fonction',[App\Http\Controllers\FonctionController::class, 'index']);
+
+
+Route::get('/responsabilite',[App\Http\Controllers\ResponsabiliteController::class, 'index']);
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
