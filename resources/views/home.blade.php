@@ -51,7 +51,7 @@
                             <img src="{{asset('/img/avions.png')}}" class="img-circle" style="border:2px black solid" alt="">
                           </a>
                           <br>
-                          <strong>GESTION DES DEPLACEMENTS <br> (MISSIONS)</strong>
+                          <div style="text-align: center; margin-left: -50%;"><strong>GESTION DES DEPLACEMENTS <br> (MISSIONS)</strong></div>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                           <a class="dropdown-item" href="#">Mission interne</a>
                           <a class="dropdown-item" href="#">Mission externe</a>
@@ -60,7 +60,7 @@
                       </div>
                 </div>
             </div>
-            <div class="row" style="margin-top: 2%">
+            <div class="row" style="margin-top: 2%" style="display: none">
                 <div class="col-6">
                    <a href="#"> <img src="{{asset('/img/stations.png')}}" alt="" class="img-circle" style="border:2px black solid"></a>
                    <br> <strong>DOTATION CARBURANT</strong>
@@ -81,18 +81,23 @@
    </div>
 
    <div class="row" style="margin-left:-50%; ">
-       <div class="col-2">
+       <div class="col-1">
            <img src="{{asset('/img/logo.jpg')}}" alt="">
        </div>
-       <div class="col-9" style="margin-top: 2%;margin-left: -5%;">
+       <div class="col-9" style="margin-top: 2%;">
            <span  style="font-size: 0.5cm;font-weight: bold;">MINISTERE DE LAGRICULTURE ET DES AMENAGEMENT HYDRO-AGRICOLE ET DE LA MECANISATION</span>
        </div>
-
-       <div class="col-1" style="margin-top: 1%;margin-right:-60%;">
+       <div class="col-1" style="margin-top: 1%">
+        <a href="#">
+           <i class="fas fa-user-cog fa-4x"></i>
+        </a>
+    </div>
+       <div class="col-1" style="margin-top: 1%">
            <a href="#">
                <img src="{{asset('/img/password.png')}}" alt="">
            </a>
        </div>
+     
    </div>
 
 </div>
