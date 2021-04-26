@@ -48,7 +48,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
-            <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
+            <a class="dropdown-item" href="{{url('/type-structure')}}">type structure</a>
             
            
           </div>
@@ -160,10 +160,11 @@
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- Select2 -->
 <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
-<script src="{{asset('dist/js/saveComposition.js')}}"></script>
+<script src="{{asset('dist/js/savestructure.js')}}"></script>
 <script src="{{asset('dist/js/select2digned.js')}}"></script>
 <script src="{{asset('dist/js/selectscript.js')}}"></script>
 <script src="{{asset('dist/js/statistique.js')}}"></script>
+
 </body>
 </html>
 
