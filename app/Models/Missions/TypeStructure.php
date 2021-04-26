@@ -9,7 +9,7 @@ class TypeStructure extends Model
 {
     use HasFactory;
 
-    protected $table='typestructures';
+    protected $table='type_structures';
 
     /**
      * Get all of the comments for the TypeStructure

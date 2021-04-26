@@ -20,6 +20,8 @@ Route::get('/parametrage', function () {
     return view('parametragehome');
 });
 
+Route::get('/type-structure',[App\Http\Controllers\TypeStructureController::class, 'index']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

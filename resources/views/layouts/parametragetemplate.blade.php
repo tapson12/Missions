@@ -47,7 +47,7 @@
            <i class="fa fa-cog fa-2x icon_color"></i> parametrage structure
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/specialites')}}">structure</a>
+            <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
             <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
             
            
