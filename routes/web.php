@@ -22,6 +22,9 @@ Route::get('/parametrage', function () {
 
 Route::get('/type-structure',[App\Http\Controllers\TypeStructureController::class, 'index']);
 
+Route::get('/region',[App\Http\Controllers\RegionController::class, 'index']);
+Route::post('/save-region',[App\Http\Controllers\RegionController::class, 'creer']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

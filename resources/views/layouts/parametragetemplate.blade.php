@@ -40,8 +40,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        
-       
+
+
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fa fa-cog fa-2x icon_color"></i> parametrage structure
@@ -49,12 +49,12 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
             <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
-            
-           
+
+
           </div>
         </li>
-      
-       
+
+
 
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,7 +72,7 @@
            <i class="fa fa-home fa-2x icon_color"></i> Decoupage administratif
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/formateurs')}}">Region</a>
+            <a class="dropdown-item" href="{{url('/region')}}">Region</a>
             <a class="dropdown-item" href="{{url('/apprenants')}}">Province</a>
             <a class="dropdown-item" href="{{ url('formations') }}">Commune</a>
           </div>
