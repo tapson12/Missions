@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <title>DGFOMR</title>
+  <title>Gestion des biens</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
@@ -40,8 +40,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        
-       
+
+
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fa fa-cog fa-2x icon_color"></i> parametrage structure
@@ -49,12 +49,12 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
             <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
-            
-           
+
+
           </div>
         </li>
-      
-       
+
+
 
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,6 +87,17 @@
             <div class="dropdown-divider"></div>
           </div>
         </li>
+
+        <li class="nav-item dropdown">
+            <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <i class="fa fa-car fa-2x icon_color"></i> Paramètrage Véhicule
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{url('/type-vehicule')}}">Type véhicule</a>
+              <a class="dropdown-item" href="{{url('/vehicule')}}">Véhicule</a>
+              <div class="dropdown-divider"></div>
+            </div>
+          </li>
 
 
       </ul>
