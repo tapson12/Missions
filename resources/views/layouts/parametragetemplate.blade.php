@@ -40,31 +40,34 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        
-       
+
+
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fa fa-cog fa-2x icon_color"></i> parametrage structure
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
             <a class="dropdown-item" href="{{url('/type-structure')}}">type structure</a>
             <a class="dropdown-item" href="{{url('/structures')}}">structure</a>
            
-            
-           
+
+            <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
+            <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
+
           </div>
         </li>
-      
-       
+
+
 
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fa fa-user fa-2x icon_color"></i> parametrage Agents
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/formateurs')}}">Type agents</a>
-            <a class="dropdown-item" href="{{url('/apprenants')}}">Fonctions</a>
-            <a class="dropdown-item" href="{{ url('formations') }}">Responsabilités</a>
+            <a class="dropdown-item" href="{{url('/type-agent')}}">Type agents</a>
+            <a class="dropdown-item" href="{{url('/fonction')}}">Fonctions</a>
+            <a class="dropdown-item" href="{{ url('/responsabilite') }}">Responsabilités</a>
             <a class="dropdown-item" href="{{url('/centre-formation')}}">Affectations</a>
           </div>
         </li>

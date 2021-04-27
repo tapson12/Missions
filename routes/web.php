@@ -25,6 +25,7 @@ Route::post('/save-type-structure',[App\Http\Controllers\TypeStructureController
 Route::post('/update-type-structure',[App\Http\Controllers\TypeStructureController::class, 'edit']);
 Route::get('/delete-type-structure/{id}',[App\Http\Controllers\TypeStructureController::class, 'destroy']);
 
+
 // url for structure 
 Route::get('/structures',[App\Http\Controllers\StructureController::class, 'index']);
 Route::get('/display-structure-form',[App\Http\Controllers\StructureController::class, 'create']);
@@ -33,6 +34,21 @@ Route::post('/save-structure',[App\Http\Controllers\StructureController::class, 
 Route::get('/display-update-structure-form/{id}',[App\Http\Controllers\StructureController::class, 'update']);
 Route::post('/update-structure/{id}',[App\Http\Controllers\StructureController::class, 'edit']);
 Route::get('/delete-structure/{id}',[App\Http\Controllers\StructureController::class, 'destroy']);
+
+
+
+
+
+Route::get('/type-agent',[App\Http\Controllers\TypeAgentController::class, 'index']);
+
+
+
+Route::get('/fonction',[App\Http\Controllers\FonctionController::class, 'index']);
+
+
+Route::get('/responsabilite',[App\Http\Controllers\ResponsabiliteController::class, 'index']);
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
