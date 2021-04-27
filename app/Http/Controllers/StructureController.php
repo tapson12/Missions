@@ -54,9 +54,57 @@ class StructureController extends Controller
 
    public function viewtail(Request $request)
    {
-    $structures=Structure::with('child')->get();
+      $structures=Structure::with('child')->get();
       return $structures->find($request->structure_id);
 
+   }
+
+   public function update($id)
+   {
+    $types=TypeStructure::all();
+    $structures=Structure::all();
+    $updatestructure=Structure::find($id);
+
+    return view('missions.missionview.updatestructures',compact(['updatestructure','structures','types']));
+   }
+
+   public function edit(Request $request,$id)
+   {
+    if (Auth::check()) {
+           
+        $email = Auth::user()->email;
+        $structure= Structure::find($id);
+        $structure->libellestructure=$request->libellestructure;
+        $structure->profil=$request->profil;
+        $structure->created_by=$email;
+        $structure->update_by=$email;
+        $structure->typestructure()->associate($request->type_structure_id);
+        $structure->structure()->associate($request->structure_id);
+
+        $structure->save();
+        return redirect('/structures');
+    }
+    else
+    {
+        return redirect('/login');
+    }
+   }
+
+
+   public function destroy($id)
+   {
+    if (Auth::check()) {
+           
+        $email = Auth::user()->email;
+        $structure= Structure::find($id);
+        
+        $structure->delete();
+        return redirect('/structures');
+    }
+    else
+    {
+        return redirect('/login');
+    }
    }
 
 }

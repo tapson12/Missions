@@ -4,7 +4,7 @@
 
 <div class="row" style="margin-top: 5%;margin-left: -50%">
   <div class="card-body">
-    <form action="{{url('/save-structure')}}" method="POST">
+    <form action="{{url('/update-structure/'.$updatestructure->id)}}" method="POST">
       @csrf
     <div class="modal-content">
       <div class="modal-header modal-header-designed">
@@ -19,7 +19,7 @@
           <div class="col-lg-6">
             <div class="form-group">
               <label for="">Structure</label>
-              <input  type="text"   name="libellestructure" id="" class="form-control" placeholder="Le libelle de la structure" aria-describedby="helpId">
+              <input  type="text" value="{{$updatestructure->libellestructure}}"   name="libellestructure" id="" class="form-control" placeholder="Le libelle de la structure" aria-describedby="helpId">
               <small id="helpId" class="text-muted" ><span style="color: red">le libelle de la structure ne doit pas être vide</span></small>
             </div>
           </div>
@@ -27,7 +27,7 @@
           <div class="col-6">
             <div class="form-group">
               <label for="">Profil</label>
-              <input type="text"   name="profil" id="" class="form-control" placeholder="Le profil de la structure" aria-describedby="helpId" required>
+              <input type="text" value="{{$updatestructure->profil}}"    name="profil" id="" class="form-control" placeholder="Le profil de la structure" aria-describedby="helpId" required>
               <small id="helpId" class="text-muted" ><span style="color: red">le profil de la structure ne doit pas être vide</span></small>
             </div>
           </div>
@@ -39,7 +39,9 @@
               <label for="">Type de structure</label>
              <select name="type_structure_id" id="" class="form-control" >
               @foreach ($types as $type)
-              <option value="{{$type->id}}">{{$type->libellestructure}}</option>
+              <option @if ($updatestructure->typestructure->id==$type->id)
+                  selected
+              @endif value="{{$type->id}}">{{$type->libellestructure}}</option>
               @endforeach
              </select>
             </div>
@@ -50,7 +52,7 @@
               <select name="structure_id" id=""  class="form-control">
                 <option value=""></option>
                 @foreach ($structures as $structure)
-               <option value="{{$structure->id}}">{{$structure->libellestructure}}</option>
+               <option  value="{{$structure->id}}">{{$structure->libellestructure}}</option>
                @endforeach
               </select>
             </div>

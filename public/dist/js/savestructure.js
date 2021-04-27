@@ -12,10 +12,14 @@ function displaysubstructure(id)
         $('#childtable').empty();
        
         data.child.forEach((item) => {
-            $('#childtable').append("<tr><td>"+item.libellestructure+"</td><td>"+data.libellestructure+"</td>/tr>");
+            
+            $('#childtable').append("<tr><td>"+item.libellestructure+"</td><td>"+data.libellestructure+"</td><td><a href='/display-update-structure-form/"+item.id+"' class='btn btn-outline-success'><i style='color: #007bff'  class='fa fa-edit'></i></a><a href='/delete-structure/"+item.id+"' class='btn btn-danger'><i   class='fa fa-trash'></i></a></td>/tr>");
            
           });
 
           
 	});
 }
+
+href="{{url('/display-update-structure-form/'.$structure->id)}}"
+

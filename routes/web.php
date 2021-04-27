@@ -30,7 +30,9 @@ Route::get('/structures',[App\Http\Controllers\StructureController::class, 'inde
 Route::get('/display-structure-form',[App\Http\Controllers\StructureController::class, 'create']);
 Route::get('/view-structure-detail',[App\Http\Controllers\StructureController::class, 'viewtail']);
 Route::post('/save-structure',[App\Http\Controllers\StructureController::class, 'store']);
-
+Route::get('/display-update-structure-form/{id}',[App\Http\Controllers\StructureController::class, 'update']);
+Route::post('/update-structure/{id}',[App\Http\Controllers\StructureController::class, 'edit']);
+Route::get('/delete-structure/{id}',[App\Http\Controllers\StructureController::class, 'destroy']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
