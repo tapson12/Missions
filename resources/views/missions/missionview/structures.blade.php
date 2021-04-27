@@ -31,7 +31,7 @@
                   <th>Structure </th>
                   <th>type structure</th>
                   <th>Profil </th>
-                 {{--   <th>Structure parents </th>  --}}
+                 <th>niveau </th>
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -44,7 +44,7 @@
                       <td>{{$structure->libellestructure}}</td>
                       <td>{{$structure->typestructure->libellestructure}}</td>
                       <td>{{$structure->profil}}</td>
-                      {{--  <td>{{$structure->child}}</td>  --}}
+                        <td>{{$structure->typestructure->niveau}}</td>  
                         <td>
                             <a  href="{{url('/display-update-structure-form/'.$structure->id)}}"  class="btn btn-outline-success"><i style="color: #007bff"  class="fa fa-edit"></i></a>
                             <button data-toggle="modal" data-target="{{'#suprimer'.$structure->id}}" class="btn btn-outline-danger"><i style="color: red" class="fa fa-trash"></i></button>
