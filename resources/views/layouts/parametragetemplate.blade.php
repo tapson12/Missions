@@ -73,8 +73,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{url('/region')}}">Region</a>
-            <a class="dropdown-item" href="{{url('/apprenants')}}">Province</a>
-            <a class="dropdown-item" href="{{ url('formations') }}">Commune</a>
+            <a class="dropdown-item" href="{{url('/province')}}">Province</a>
+            <a class="dropdown-item" href="{{ url('/commune') }}">Commune</a>
           </div>
         </li>
         <li class="nav-item dropdown">
