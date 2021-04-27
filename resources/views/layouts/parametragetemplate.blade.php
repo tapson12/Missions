@@ -47,6 +47,11 @@
            <i class="fa fa-cog fa-2x icon_color"></i> parametrage structure
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <a class="dropdown-item" href="{{url('/type-structure')}}">type structure</a>
+            <a class="dropdown-item" href="{{url('/structures')}}">structure</a>
+
+
             <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
             <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
 
@@ -61,9 +66,9 @@
            <i class="fa fa-user fa-2x icon_color"></i> parametrage Agents
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/formateurs')}}">Type agents</a>
-            <a class="dropdown-item" href="{{url('/apprenants')}}">Fonctions</a>
-            <a class="dropdown-item" href="{{ url('formations') }}">Responsabilités</a>
+            <a class="dropdown-item" href="{{url('/type-agent')}}">Type agents</a>
+            <a class="dropdown-item" href="{{url('/fonction')}}">Fonctions</a>
+            <a class="dropdown-item" href="{{ url('/responsabilite') }}">Responsabilités</a>
             <a class="dropdown-item" href="{{url('/centre-formation')}}">Affectations</a>
           </div>
         </li>
@@ -160,10 +165,11 @@
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- Select2 -->
 <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
-<script src="{{asset('dist/js/saveComposition.js')}}"></script>
+<script src="{{asset('dist/js/savestructure.js')}}"></script>
 <script src="{{asset('dist/js/select2digned.js')}}"></script>
 <script src="{{asset('dist/js/selectscript.js')}}"></script>
 <script src="{{asset('dist/js/statistique.js')}}"></script>
+
 </body>
 </html>
 

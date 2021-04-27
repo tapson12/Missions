@@ -22,7 +22,9 @@ class TypeStructureController extends Controller
     {
         if (Auth::check()) {
             $type=new TypeStructure();
+            //recuperation de l'identifiant de l'utilisateur connécter
             $email = Auth::user()->email;
+            
             $type->libellestructure=$request->libellestructure;
             $type->niveau=$request->niveau;
             $type->created_by=$email;

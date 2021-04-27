@@ -31,15 +31,49 @@ class Structure extends Model
         return $this->belongsTo(TypeStructure::class, 'type_structure_id');
     }
 
-    public function structures()
+/*     public function structureChild()
     {
         return $this->hasMany(Structure::class);
+
+        return $this->hasMany(Structure::class, 'structure_id', 'structure_id');
     }
 
-    public function childrenStructures()
+    public function allStructures()
     {
-        return $this->hasMany(Structure::class)->with('structures');
+        return $this->structureChild()->with('structures');
+    } */
+
+    /**
+     * Get the user that owns the Structure
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function structure()
+    {
+        return $this->belongsTo(Structure::class, 'structure_id');
     }
+
+
+
+    public function parent()
+    {
+        // recursively return all parents
+        // the with() function call makes it recursive.
+        // if you remove with() it only returns the direct parent
+        return $this->belongsTo(Structure::class, 'structure_id')->with('parent');
+    }
+
+    public function child()
+    {
+        // recursively return all children
+        return $this->HasMany(Structure::class, 'structure_id')->with('child');
+    }
+
+    public function allStructures()
+    {
+        return $this->child()->with('structures');
+    } 
+
 
 
 }
