@@ -28,76 +28,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
-  <!-- Navbar -->
-  <nav class=" navbar navbar-expand navbar-white navbar-light" style="background-color: #F3F2F2;color: black">
-
-    <a class="navbar-brand" href="{{url('/home')}}">
-      <i class="fa fa-home fa-3x" style="color: green"></i>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-
-
-        <li class="nav-item dropdown">
-          <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fa fa-cog fa-2x icon_color"></i> parametrage structure
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-            <a class="dropdown-item" href="{{url('/type-structure')}}">type structure</a>
-            <a class="dropdown-item" href="{{url('/structures')}}">structure</a>
-          </div>
-        </li>
-
-
-
-        <li class="nav-item dropdown">
-          <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fa fa-user fa-2x icon_color"></i> parametrage Agents
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/type-agent')}}">Type agents</a>
-            <a class="dropdown-item" href="{{url('/fonction')}}">Fonctions</a>
-            <a class="dropdown-item" href="{{ url('/responsabilite') }}">Responsabilités</a>
-            <a class="dropdown-item" href="{{url('/centre-formation')}}">Affectations</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fa fa-home fa-2x icon_color"></i> Decoupage administratif
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/formateurs')}}">Region</a>
-            <a class="dropdown-item" href="{{url('/apprenants')}}">Province</a>
-            <a class="dropdown-item" href="{{ url('formations') }}">Commune</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fa fa-users fa-2x icon_color"></i> Paramètrage utilisateurs
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/domaine-installation')}}">Utilisateurs</a>
-            <a class="dropdown-item" href="{{url('/kits')}}">Droits</a>
-            <div class="dropdown-divider"></div>
-          </div>
-        </li>
-
-
-      </ul>
-
-    </div>
-
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-
-
+  
 <div class="row">
   <div class="col-lg-4 col-md-4 col-sm-4">
 

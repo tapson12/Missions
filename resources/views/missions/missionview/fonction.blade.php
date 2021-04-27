@@ -66,7 +66,7 @@
                                     <div class="col-lg-12">
                                       <div class="form-group">
                                         <label for="">Fonction</label>
-                                        <input type="text" value="{{$fonction->libellefonction}}" name="libelleregion" id="" class="form-control" placeholder="Fonction" aria-describedby="helpId" required/>
+                                        <input type="text" value="{{$fonction->libellefonction}}" name="libellefonction" id="" class="form-control" placeholder="Fonction" aria-describedby="helpId" required/>
                                         <small id="helpId" class="text-muted" ><span style="color: red">le nom de la fonction est obligatoire</span></small>
                                       </div>
                                     </div>

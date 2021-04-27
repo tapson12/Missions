@@ -66,7 +66,7 @@
                                     <div class="col-lg-12">
                                       <div class="form-group">
                                         <label for="">Responsabilité</label>
-                                        <input type="text" value="{{$responsabilite->code}}" name="libelleregion" id="" class="form-control" placeholder="Responsabilite" aria-describedby="helpId" required/>
+                                        <input type="text" value="{{$responsabilite->code}}" name="code" id="" class="form-control" aria-describedby="helpId" required/>
                                         <small id="helpId" class="text-muted" ><span style="color: red">Responsabilite obligatoire</span></small>
                                       </div>
                                     </div>
@@ -150,8 +150,8 @@
             <div class="col-lg-12">
               <div class="form-group">
                 <label for="">Responsabilite</label>
-                <input type="text" name="code" id="" class="form-control" placeholder="Responsabilitérçp;:" aria-describedby="helpId" required>
-                <small id="helpId" class="text-muted" ><span style="color: red">la fonction doit pas etre vide</span></small>
+                <input type="text" name="code" id="" class="form-control" placeholder="Responsabilité" aria-describedby="helpId" required>
+                <small id="helpId" class="text-muted" ><span style="color: red">Responsabilite obligatoire</span></small>
               </div>
             </div>
           </div>

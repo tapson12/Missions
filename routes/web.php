@@ -36,17 +36,27 @@ Route::post('/update-structure/{id}',[App\Http\Controllers\StructureController::
 Route::get('/delete-structure/{id}',[App\Http\Controllers\StructureController::class, 'destroy']);
 
 
-
-
-
-Route::get('/type-agent',[App\Http\Controllers\TypeAgentController::class, 'index']);
-
-
-
 Route::get('/fonction',[App\Http\Controllers\FonctionController::class, 'index']);
+Route::post('/save-fonction',[App\Http\Controllers\FonctionController::class, 'store']);
+Route::post('/update-fonction',[App\Http\Controllers\FonctionController::class, 'edit']);
+Route::get('/delete-fonction/{id}',[App\Http\Controllers\FonctionController::class, 'destroy']);
+
 
 
 Route::get('/responsabilite',[App\Http\Controllers\ResponsabiliteController::class, 'index']);
+Route::get('/delete-responsabilite/{id}',[App\Http\Controllers\ResponsabiliteController::class, 'destroy']);
+Route::post('/save-responsabilite',[App\Http\Controllers\ResponsabiliteController::class, 'store']);
+Route::post('/update-responsabilite',[App\Http\Controllers\ResponsabiliteController::class, 'edit']);
+
+
+Route::get('/type-agent',[App\Http\Controllers\TypeAgentController::class, 'index']);
+Route::post('/save-typeagent',[App\Http\Controllers\TypeAgentController::class, 'store']);
+Route::post('/update-typeagent',[App\Http\Controllers\TypeAgentController::class, 'edit']);
+Route::get('/delete-typeagent/{id}',[App\Http\Controllers\TypeAgentController::class, 'destroy']);
+
+
+Route::get('/agents',[App\Http\Controllers\AgentController::class, 'index']);
+Route::post('/save-agent',[App\Http\Controllers\AgentController::class, 'store']);
 
 
 Auth::routes();

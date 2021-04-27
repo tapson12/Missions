@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Missions\Responsabilite;
-use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use GrahamCampbell\ResultType\Result;
+use App\Models\Missions\Responsabilite;
 
 class ResponsabiliteController extends Controller
 {
@@ -40,6 +41,22 @@ class ResponsabiliteController extends Controller
     public function store(Request $request)
     {
         //
+
+        if (Auth::check()) {
+            $responsabilite=new Responsabilite();
+            $email = Auth::user()->email;
+            $responsabilite->code=$request->code;
+
+            $responsabilite->created_by=$email;
+            $responsabilite->update_by=$email;
+            $responsabilite->save();
+
+            return redirect('/responsabilite');
+        }
+        else
+        {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -59,9 +76,24 @@ class ResponsabiliteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+
+        if (Auth::check()) {
+            $responsabilite= Responsabilite::find($request->id);
+            $email = Auth::user()->email;
+            $responsabilite->code=$request->code;
+
+            $responsabilite->update_by=$email;
+            $responsabilite->save();
+
+            return redirect('/responsabilite');
+        }
+        else
+        {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -85,5 +117,18 @@ class ResponsabiliteController extends Controller
     public function destroy($id)
     {
         //
+
+        if (Auth::check()) {
+            $responsabilite= Responsabilite::find($id);
+
+            $responsabilite->delete();
+
+            return redirect('/responsabilite');
+        }
+        else
+        {
+            return redirect('/login');
+        }
+
     }
 }
