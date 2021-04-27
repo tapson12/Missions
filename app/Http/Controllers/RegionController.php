@@ -20,7 +20,7 @@ class RegionController extends Controller
         if (Auth::check()) {
             $region = new Region();
             $email = Auth::user()->email;
-            $region->libelleregion = $request->libelleregion;
+            $region->libelleregion = ucwords($request->libelleregion);
             $region->created_by=$email;
             $region->update_by=$email;
             $region->save();
@@ -41,7 +41,7 @@ class RegionController extends Controller
         if (Auth::check()) {
             $region= Region::find($request->id);
             $email = Auth::user()->email;
-            $region->libelleregion = $request->libelleregion;
+            $region->libelleregion = ucwords($request->libelleregion);
             $region->created_by=$email;
             $region->update_by=$email;
             $region->save();

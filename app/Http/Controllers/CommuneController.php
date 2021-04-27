@@ -23,7 +23,7 @@ class CommuneController extends Controller
             $commune = new Commune();
             $email = Auth::user()->email;
             $commune->province_id = $request->idprovince;
-            $commune->libelleCommune = $request->libelleCommune;
+            $commune->libelleCommune = ucwords($request->libelleCommune);
             $commune->created_by=$email;
             $commune->update_by=$email;
             $commune->save();
@@ -42,7 +42,7 @@ class CommuneController extends Controller
             $commune = Commune::find($request->id);
             $email = Auth::user()->email;
             $commune->province_id = $request->idprovince;
-            $commune->libelleCommune = $request->libelleCommune;
+            $commune->libelleCommune = ucwords($request->libelleCommune);
             $commune->created_by=$email;
             $commune->update_by=$email;
             $commune->save();

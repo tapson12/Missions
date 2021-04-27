@@ -23,7 +23,7 @@ class ProvinceController extends Controller
             $province = new Province();
             $email = Auth::user()->email;
             $province->region_id = $request->idregion;
-            $province->libelleProvince = $request->libelleProvince;
+            $province->libelleProvince = ucwords($request->libelleProvince);
             $province->created_by=$email;
             $province->update_by=$email;
             $province->save();
@@ -42,7 +42,7 @@ class ProvinceController extends Controller
             $province = Province::find($request->id);
             $email = Auth::user()->email;
             $province->region_id = $request->idregion;
-            $province->libelleProvince = $request->libelleProvince;
+            $province->libelleProvince = ucwords($request->libelleProvince);
             $province->created_by=$email;
             $province->update_by=$email;
             $province->save();

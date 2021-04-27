@@ -31,6 +31,7 @@
             <table id="typeenvoyeurTable" class="table table-bordered table-striped">
                 <thead style="background-color: #019d4a;color:white;opacity: .8;">
                 <tr>
+                  <th>Régions</th>
                   <th>Provinces</th>
                   <th>Actions</th>
                 </tr>
@@ -38,6 +39,7 @@
                 <tbody>
                   @foreach ($provinces as $province)
                   <tr>
+                    <td>{{$province->region->libelleregion}}</td>
                     <td>{{$province->libelleProvince}}</td>
                       <td>
                           <button  data-toggle="modal" data-target="{{'#modifier'.$province->id}}"  class="btn btn-outline-success"><i style="color: #007bff"  class="fa fa-edit"></i></button>
