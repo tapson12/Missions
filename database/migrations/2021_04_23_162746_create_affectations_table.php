@@ -15,12 +15,21 @@ class CreateAffectationsTable extends Migration
     {
         Schema::create('affectations', function (Blueprint $table) {
             $table->bigIncrements('id');         
-            $table->bigInteger('agent_id');        
+            $table->bigInteger('agent_id'); 
+            $table->bigInteger('fonction_id');
+            
+            $table->bigInteger('responsabilite_id');
+                   
             $table->bigInteger('structure_id')->nullable()->default(12);        
             $table->date('datedebut')->nullable();  
             $table->date('datefin')->nullable();           
             $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');       
             $table->foreign('structure_id')->references('id')->on('structures')->onDelete('cascade');
+            
+            $table->foreign('fonction_id')->references('id')->on('fonctions')->onDelete('cascade');
+            
+            $table->foreign('responsabilite_id')->references('id')->on('responsabilites')->onDelete('cascade');
+            
             $table->string("created_by");
             $table->string("update_by");
             $table->boolean('activer')->nullable()->default(false);
