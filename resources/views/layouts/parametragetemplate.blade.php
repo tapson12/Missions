@@ -183,7 +183,7 @@
 <script src="{{asset('dist/js/select2digned.js')}}"></script>
 <script src="{{asset('dist/js/selectscript.js')}}"></script>
 <script src="{{asset('dist/js/statistique.js')}}"></script>
-
+<script src="{{asset('dist/js/signatures.js')}}"></script>
 </body>
 </html>
 

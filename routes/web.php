@@ -91,6 +91,12 @@ Route::post('/save-affectation',[App\Http\Controllers\AgentController::class, 's
 
 Route::get('/signataire',[App\Http\Controllers\SignatureController::class, 'index']);
 Route::get('/display-signataire-form',[App\Http\Controllers\SignatureController::class, 'create']);
+Route::get('/get-signataire',[App\Http\Controllers\SignatureController::class, 'getsignatairebystructure']);
+Route::get('/get-signatairebyone',[App\Http\Controllers\SignatureController::class, 'getsignatairebysignataireone']);
+Route::get('/get-signatairebytwo',[App\Http\Controllers\SignatureController::class, 'getsignatairebysignatairetwo']);
+
+Route::post('/save-signature',[App\Http\Controllers\SignatureController::class, 'store']);
+
 
 
 Auth::routes();

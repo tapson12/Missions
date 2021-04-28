@@ -5,10 +5,10 @@
 <div class="row" style="margin-top: 5%;margin-left: -50%">
   <div class="card-body">
     <form action="{{url('/save-structure')}}" method="POST">
-      @csrf
+      <input type="text" value="{{csrf_token()}}" name="_token" id="token" hidden="true">
     <div class="modal-content">
       <div class="modal-header modal-header-designed">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter une structure</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Paramètrage signataire</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -31,9 +31,9 @@
           <div class="col-6">
             <div class="form-group">
               <label for="">Signataire 1</label>
-             <select name="signataire_1" id="" class="form-control" >
+             <select name="signataire_1" id="signataire_1" class="form-control" >
               @foreach ($agents as $agent)
-              <option value="{{$agent->nom}} {{$agent->prenom}}">{{$agent->nom}} {{$agent->prenom}}</option>
+              <option value="{{$agent->matricule}}">{{$agent->nom}} {{$agent->prenom}}</option>
               @endforeach
              </select>
             </div>
@@ -41,10 +41,10 @@
           <div class="col-6">
             <div class="form-group">
               <label for="">Signataire 1</label>
-              <select name="signataire_2" id=""  class="form-control">
+              <select name="signataire_2" id="signataire_2"  class="form-control">
                 <option value=""></option>
                 @foreach ($agents as $agent)
-                <option value="{{$agent->nom}} {{$agent->prenom}}">{{$agent->nom}} {{$agent->prenom}}</option>
+                <option value="{{$agent->matricule}}">{{$agent->nom}} {{$agent->prenom}}</option>
                 @endforeach
               </select>
             </div>
@@ -75,7 +75,7 @@
       </div>
       <div class="modal-footer">
         <a href="{{url('/structures')}}" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></a>
-        <button type="submit" class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></button>
+        <a href="javascript:void(0)" onclick="savesignataire()" class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></a>
       </div>
     </div>
   </form>
