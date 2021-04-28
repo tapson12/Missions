@@ -198,28 +198,23 @@
                           <th>Nom et prenom</th>
                           <th>Structure</th>
                           <th>fonction </th>
-                          <th>Date de naissance </th>
                           <th>responsabilité </th>
                           <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody id="table_agent_body">
-                          @foreach ($agents as $agent)
+                          @foreach ($affectations as $affectation)
                               <tr>
-                                <td>{{$agent->matricule}}</td>
-                                <td>{{$agent->nom}} {{$agent->prenom}} </td>
+                                <td>{{$affectation->agent->matricule}}</td>
+                                <td>{{$affectation->agent->nom}} {{$affectation->agent->prenom}} </td>
                                 <td>
-                                  @foreach ($agent->structure as $item)
-                                      {{$item->libellestructure}}
-                                  @endforeach
+                                  {{$affectation->structure->libellestructure}}
                                 </td>
                                 <td>
-                                  @foreach ($agent->fonction as $item)
-                                  {{$item->libellefonction}}
-                                   @endforeach
+                                  
+                                  {{$affectation->fonction->libellefonction}}
                                 </td>
-                                <td>{{$agent->datenaissance}}</td>
-                                <td>{{$agent->responsabilite}}</td>
+                                <td>{{$affectation->responsabilite->code}}</td>
                                 <td>
                                   <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </td>

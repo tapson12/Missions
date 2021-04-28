@@ -57,6 +57,19 @@
               </select>
             </div>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="">Responsable</label>
+              <select name="responsable" id=""  class="form-control">
+                <option value=""></option>
+                @foreach ($agents as $agent)
+               <option value="{{$agent->nom}} {{$agent->prenom}}">{{$agent->matricule}} {{$agent->nom}} {{$agent->prenom}}</option>
+               @endforeach
+              </select>
+            </div>
+          </div>
         </div> 
       </div>
       <div class="modal-footer">

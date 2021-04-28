@@ -74,6 +74,12 @@ class Structure extends Model
         return $this->child()->with('structures');
     } 
 
+    
+    public function signature()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 
 
 }
