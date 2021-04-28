@@ -47,7 +47,7 @@
                               <th>Date de naissance</th>
                               <th>Type d agent </th>
                               <th>Sexe </th>
-                               
+
                               <th>Actions</th>
                             </tr>
                             </thead>
@@ -65,7 +65,7 @@
                                   </tr>
                               @endforeach
                             </tbody>
-                          
+
                           </table>
                       </div>
                     </div>
@@ -112,7 +112,7 @@
                                   <input type="text" class="form-control" name="prenom" id="prenom">
                                 </div>
                                </div>
-                               
+
 
                                <div class="col-6">
                                 <div class="form-group">
@@ -160,7 +160,7 @@
                             <div class="row">
                               <div class="col-6">
                                 <div class="form-group">
-                                  <label for="exampleInputFile">Situation matrimoniale</label>
+                                  <label for="exampleInputFile">Type agent</label>
                                   <select name="type_agent" id="type_agent" class="form-control" >
                                    @foreach ($types as $type)
                                        <option value="{{$type->id}}">{{$type->typeagent}}</option>
@@ -189,7 +189,7 @@
                         </a>
                       </div>
                     </div>
-                    
+
                     <div class="row" style="margin-top: 5%;">
                       <table id="table_agent" class="table table-bordered table-striped">
                         <thead style="background-color: #019d4a;color:white;opacity: .8;">
@@ -198,6 +198,7 @@
                           <th>Nom et prenom</th>
                           <th>Structure</th>
                           <th>fonction </th>
+                          <th>Date de naissance </th>
                           <th>responsabilité </th>
                           <th>Actions</th>
                         </tr>
@@ -205,21 +206,31 @@
                         <tbody id="table_agent_body">
                           @foreach ($agents as $agent)
                               <tr>
-                                {{--  <td>{{$agent->matricule}}</td>
+                                <td>{{$agent->matricule}}</td>
                                 <td>{{$agent->nom}} {{$agent->prenom}} </td>
+                                <td>
+                                  @foreach ($agent->structure as $item)
+                                      {{$item->libellestructure}}
+                                  @endforeach
+                                </td>
+                                <td>
+                                  @foreach ($agent->fonction as $item)
+                                  {{$item->libellefonction}}
+                                   @endforeach
+                                </td>
                                 <td>{{$agent->datenaissance}}</td>
-                                <td>{{$agent->sexe}}</td>
+                                <td>{{$agent->responsabilite}}</td>
                                 <td>
                                   <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                </td>  --}}
+                                </td>
                               </tr>
                           @endforeach
                         </tbody>
-                      
+
                       </table>
                     </div>
                   </div>
-                 
+
                   <!-- Modal -->
             <div class="modal fade" id="affectionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
@@ -236,7 +247,7 @@
                         <div class="col-6">
                           <div class="form-group">
                             <label for="exampleInputFile">Agent</label>
-                            <select name="agent" id="" class="form-control">
+                            <select name="agent" id="agent" class="form-control">
                               @foreach ($agents as $agent)
                                   <option value="{{$agent->id}}">{{$agent->matricule}} {{$agent->nom}} {{$agent->prenom}}</option>
                               @endforeach
@@ -279,6 +290,20 @@
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group">
+                            <label for="activer">Date de debut</label>
+                            <input id="datedebut" type="date" value="datedebut" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label for="activer">Date de fin</label>
+                            <input type="date" id="datefin" value="datefin" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
                             <label for="activer">Activer</label>
                             <input type="checkbox" name="active" id="active">
                           </div>
@@ -288,7 +313,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">Enregistrer <i class="fa fa-save"></i></button>
+                    <button type="button" onclick="saveaffectation()" class="btn btn-success">Enregistrer <i class="fa fa-save"></i></button>
                   </div>
                 </div>
               </div>

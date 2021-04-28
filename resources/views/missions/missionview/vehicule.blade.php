@@ -31,18 +31,18 @@
             <table id="typeenvoyeurTable" class="table table-bordered table-striped">
                 <thead style="background-color: #019d4a;color:white;opacity: .8;">
                 <tr>
-                  <th>Type vehicule </th>
                   <th>Immatriculation</th>
                   <th>Marque</th>
+                  <th>Type vehicule </th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                   @foreach ($vehicules as $vehicule)
                   <tr>
-                    <td>{{$vehicule->typevehicules->libelletypevehicule}}</td>
                     <td>{{ $vehicule->immatriculation }}</td>
                     <td>{{ $vehicule->libellevehicule }}</td>
+                    <td>{{$vehicule->typevehicule->libelletypevehicule}}</td>
                       <td>
                           <button  data-toggle="modal" data-target="{{'#modifier'.$vehicule->id}}"  class="btn btn-outline-success"><i style="color: #007bff"  class="fa fa-edit"></i></button>
                           <button data-toggle="modal" data-target="{{'#suprimer'.$vehicule->id}}" class="btn btn-outline-danger"><i style="color: red" class="fa fa-trash"></i></button>
@@ -132,7 +132,7 @@
                       <div class="row">
                         <div class="col-lg-12 col-sm-12  col-md-12">
                           <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
-                          <a href="{{url('/delete-vehicule/'.$type->id)}}" class="btn btn-danger">supprimer <i class="fa fa-trash" style="color: white"></i></a>
+                          <a href="{{url('/delete-vehicule/'.$vehicule->id)}}" class="btn btn-danger">supprimer <i class="fa fa-trash" style="color: white"></i></a>
                         </div>
                       </div>
                    </div>
@@ -198,7 +198,7 @@
             <div class="col-lg-12">
               <div class="form-group">
                 <label for="">Type véhicule</label>
-                <select id="" class="form-control" name="libelletypevehicule" >
+                <select id="typevehicule_id" class="form-control" name="typevehicule" >
                     @foreach ($typevehicules as $typevehicule)
                     <option value="{{$typevehicule->id}}">{{$typevehicule->libelletypevehicule}}</option>
                     @endforeach

@@ -85,32 +85,36 @@ function displaysubstructure(id)
 });
 }
 
-function affectationagent() {
+function saveaffectation() {
    
     var token=$('#token').val();
-    var activer= $("#active").prop('checked');
-    var agent=$("#agent").val();
+    var activer= $("#activer").prop('checked');
+    var agent_id=$("#agent").val();
     var structure =$("#structure").val();
     var responsabilite=$("#responsabilite").val();
     var fonction=$("#fonction").val();
-    
+    var datedebut=$("#datedebut").val();
+    var datefin=$("#datefin").val();
  
+    alert(agent_id);
     $.ajax({
      url: '/save-affectation',
      type:'POST',
      data: {
-         active:avtive,
-         agent:agent,
+         activer:activer,
+         agent_id:agent_id,
          structure:structure,
          responsabilite:responsabilite,
          fonction:fonction,
+         datedebut:datedebut,
+         datefin:datefin,
          "_token": token
  
      }
  }).done(function(data){
      
      console.log(data);
-     $("#table_agent_body").append("<tr><td>"+matricule+"</td><td>"+nom+"</td><td>"+prenom+"</td> <td>"+datenaissance+"</td><td>"+sexe+"</td><td><button class='btn btn-danger'><i class='fa fa-trash'></i></button ></td></tr>")
+     //$("#table_agent_body").append("<tr><td>"+matricule+"</td><td>"+nom+"</td><td>"+prenom+"</td> <td>"+datenaissance+"</td><td>"+sexe+"</td><td><button class='btn btn-danger'><i class='fa fa-trash'></i></button ></td></tr>")
      $("#table_agent").DataTable().ajax.relaod();
        
  });

@@ -8,6 +8,7 @@ use App\Models\Missions\TypeAgent;
 use App\Models\Missions\Structure;
 use App\Models\Missions\Responsabilite;
 use App\Models\Missions\Fonction;
+use App\Models\Missions\Affectation;
 use Illuminate\Support\Facades\Auth;
 class AgentController extends Controller
 {
@@ -54,5 +55,37 @@ class AgentController extends Controller
         }
 
        
+    }
+
+    public function saveaffectation(Request $request)
+    {
+        
+
+        if(Auth::check())
+        {
+             $email = Auth::user()->email;
+            $affectation= new Affectation();
+            $activer=$request->activer;
+            $agent_id=$request->agent_id;
+            $structure_id=$request->structure;
+            $fonction_id=$request->fonction;
+            $responsabilite_id=$request->responsabilite;
+            $affectation->activer=$activer;
+            $affectation->datedebut=$request->datedebut;
+            $affectation->datefin=$request->datefin;
+            $affectation->created_by=$email;
+            $affectation->update_by=$email;
+            $affectation->structure()->associate($structure_id);
+            $affectation->agent()->associate($agent_id);
+            $affectation->fonction()->associate($fonction_id);
+            $affectation->responsabilite()->associate($responsabilite_id);
+            $affectation->save();
+             
+            
+            return $request->all();
+        }
+
+        return redirect('/login');
+        
     }
 }

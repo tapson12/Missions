@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <title>Gestion des biens</title>
+  <title>Gestion des biens - Missions</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
@@ -66,6 +66,7 @@
            <i class="fa fa-user fa-2x icon_color"></i> parametrage Agents
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{url('/agents')}}">Agent</a>
             <a class="dropdown-item" href="{{url('/type-agent')}}">Type agents</a>
             <a class="dropdown-item" href="{{url('/fonction')}}">Fonctions</a>
             <a class="dropdown-item" href="{{ url('/responsabilite') }}">Responsabilités</a>
