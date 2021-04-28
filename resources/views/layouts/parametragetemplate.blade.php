@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <title>DGFOMR</title>
+  <title>Gestion des biens</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
@@ -50,6 +50,12 @@
 
             <a class="dropdown-item" href="{{url('/type-structure')}}">type structure</a>
             <a class="dropdown-item" href="{{url('/structures')}}">structure</a>
+
+
+            <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
+            <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
+
+
           </div>
         </li>
 
@@ -71,9 +77,9 @@
            <i class="fa fa-home fa-2x icon_color"></i> Decoupage administratif
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/formateurs')}}">Region</a>
-            <a class="dropdown-item" href="{{url('/apprenants')}}">Province</a>
-            <a class="dropdown-item" href="{{ url('formations') }}">Commune</a>
+            <a class="dropdown-item" href="{{url('/region')}}">Region</a>
+            <a class="dropdown-item" href="{{url('/province')}}">Province</a>
+            <a class="dropdown-item" href="{{ url('/commune') }}">Commune</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -86,6 +92,17 @@
             <div class="dropdown-divider"></div>
           </div>
         </li>
+
+        <li class="nav-item dropdown">
+            <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <i class="fa fa-car fa-2x icon_color"></i> Paramètrage Véhicule
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{url('/type-vehicule')}}">Type véhicule</a>
+              <a class="dropdown-item" href="{{url('/vehicule')}}">Véhicule</a>
+              <div class="dropdown-divider"></div>
+            </div>
+          </li>
 
 
       </ul>
