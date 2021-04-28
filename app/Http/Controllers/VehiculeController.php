@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Missions\TypeVehicule;
 use App\Models\Missions\Vehicule;
-use CreateTypeVehiculesTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -22,9 +21,6 @@ class VehiculeController extends Controller
         $typevehicules=TypeVehicule::all();
         return view('missions.missionview.vehicule',compact(['vehicules','typevehicules']));
         //
-
-
-
     }
 
     /**
@@ -37,29 +33,22 @@ class VehiculeController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
         if (Auth::check()){
-            $id=$request->input('libelleTypeVehicule');
-            $typevehicule= TypeVehicule::find($id);
 
-            $type=new Vehicule();
+            $vehicule=new Vehicule();
             $email = Auth::user()->email;
-            $type->typevehicule()->associate($typevehicule);
-            $type->immatriculation=$request->immatriculation;
-            $type->libellevehicule=$request->libellevehicule;
-            $type->created_by=$email;
-            $type->update_by=$email;
-            $type->save();
-
+            $vehicule->typevehicule_id=$request->typevehicule;
+            $vehicule->immatriculation=$request->immatriculation;
+            $vehicule->libellevehicule=$request->libellevehicule;
+            $vehicule->created_by=$email;
+            $vehicule->update_by=$email;
+            $vehicule->save();
             return redirect('/vehicule');
+
         }
         else
         {
@@ -88,20 +77,17 @@ class VehiculeController extends Controller
     {
 
         if (Auth::check()) {
-            $type= Vehicule::find($request->id);
+
+            $vehicule= Vehicule::find($request->id);;
             $email = Auth::user()->email;
-            $type->immatriculation=$request->immatriculation;
-            $type->libellevehicule=$request->liebellevehicule;
-            $type->created_by=$email;
-            $type->update_by=$email;
-
-            $id=$request->input('libelleTypeVehicule');
-            $typevehicule= TypeVehicule::find($id);
-
-            $type->typevehicule()->associate($typevehicule);
-            $type->save();
-
+            $vehicule->typevehicule_id=$request->typevehicule;
+            $vehicule->immatriculation=$request->immatriculation;
+            $vehicule->libellevehicule=$request->libellevehicule;
+            $vehicule->created_by=$email;
+            $vehicule->update_by=$email;
+            $vehicule->save();
             return redirect('/vehicule');
+
         }
         else
         {

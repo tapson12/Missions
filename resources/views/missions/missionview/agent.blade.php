@@ -47,7 +47,7 @@
                               <th>Date de naissance</th>
                               <th>Type d agent </th>
                               <th>Sexe </th>
-                               
+
                               <th>Actions</th>
                             </tr>
                             </thead>
@@ -65,7 +65,7 @@
                                   </tr>
                               @endforeach
                             </tbody>
-                          
+
                           </table>
                       </div>
                     </div>
@@ -112,7 +112,7 @@
                                   <input type="text" class="form-control" name="prenom" id="prenom">
                                 </div>
                                </div>
-                               
+
 
                                <div class="col-6">
                                 <div class="form-group">
@@ -160,7 +160,7 @@
                             <div class="row">
                               <div class="col-6">
                                 <div class="form-group">
-                                  <label for="exampleInputFile">Situation matrimoniale</label>
+                                  <label for="exampleInputFile">Type agent</label>
                                   <select name="type_agent" id="type_agent" class="form-control" >
                                    @foreach ($types as $type)
                                        <option value="{{$type->id}}">{{$type->typeagent}}</option>
@@ -189,7 +189,7 @@
                         </a>
                       </div>
                     </div>
-                    
+
                     <div class="row" style="margin-top: 5%;">
                       <table id="table_agent" class="table table-bordered table-striped">
                         <thead style="background-color: #019d4a;color:white;opacity: .8;">
@@ -221,11 +221,11 @@
                               </tr>
                           @endforeach
                         </tbody>
-                      
+
                       </table>
                     </div>
                   </div>
-                 
+
                   <!-- Modal -->
             <div class="modal fade" id="affectionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
