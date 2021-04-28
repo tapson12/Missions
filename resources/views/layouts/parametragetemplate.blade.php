@@ -44,17 +44,12 @@
 
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fa fa-cog fa-2x icon_color"></i> parametrage structure
+           <i class="fa fa-cog fa-2x icon_color"></i>Structures
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
             <a class="dropdown-item" href="{{url('/type-structure')}}">type structure</a>
-            <a class="dropdown-item" href="{{url('/structures')}}">structure</a>
-
-
-            <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
-            <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
-
+            <a class="dropdown-item" href="{{url('/structures')}}">structures</a>
 
           </div>
         </li>
@@ -63,7 +58,7 @@
 
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fa fa-user fa-2x icon_color"></i> parametrage Agents
+           <i class="fa fa-user fa-2x icon_color"></i>Agents
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{url('/agents')}}">Agent</a>
@@ -75,7 +70,7 @@
         </li>
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fa fa-home fa-2x icon_color"></i> Decoupage administratif
+           <i class="fa fa-home fa-2x icon_color"></i> Découpage administratif
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{url('/region')}}">Region</a>
@@ -85,7 +80,7 @@
         </li>
         <li class="nav-item dropdown">
           <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fa fa-users fa-2x icon_color"></i> Paramètrage utilisateurs
+           <i class="fa fa-users fa-2x icon_color"></i>Utilisateurs
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{url('/domaine-installation')}}">Utilisateurs</a>
@@ -96,13 +91,20 @@
 
         <li class="nav-item dropdown">
             <a style="color: black" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <i class="fa fa-car fa-2x icon_color"></i> Paramètrage Véhicule
+             <i class="fa fa-car fa-2x icon_color"></i> Véhicules
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{url('/type-vehicule')}}">Type véhicule</a>
               <a class="dropdown-item" href="{{url('/vehicule')}}">Véhicule</a>
               <div class="dropdown-divider"></div>
             </div>
+          </li>
+
+          <li>
+            <a href="{{url('/signataire')}}" class="nav-link">
+             <i class="fa fa-user fa-2x icon_color"></i>Signataire
+            </a>
+           
           </li>
 
 

@@ -19,10 +19,11 @@ class AgentController extends Controller
         $types=TypeAgent::all();
         $structures=Structure::all();
         $reponsabilites=Responsabilite::all();
+        $affectations=Affectation::all();
         $fonctions=Fonction::all();
         $agents=Agent::paginate(10);
-
-        return view('missions.missionview.agent',compact(['types','agents','structures','fonctions','reponsabilites']));
+        
+        return view('missions.missionview.agent',compact(['types','agents','structures','fonctions','reponsabilites','affectations']));
     }
 
     public function store(Request $request)
