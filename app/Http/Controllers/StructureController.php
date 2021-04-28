@@ -33,6 +33,7 @@ class StructureController extends Controller
 
             $email = Auth::user()->email;
             $structure=new Structure();
+            $structure->code=$request->code;
             $structure->libellestructure=$request->libellestructure;
             $structure->profil=$request->profil;
             $structure->created_by=$email;

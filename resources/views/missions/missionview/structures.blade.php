@@ -18,7 +18,7 @@
     <div class="col-12">
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        le libelle de la region ne doit pas être vide 
+        le libelle de la region ne doit pas être vide
       </div>
     </div>
   </div>
@@ -28,23 +28,25 @@
             <table id="typeenvoyeurTable" class="table table-bordered table-striped">
                 <thead style="background-color: #019d4a;color:white;opacity: .8;">
                 <tr>
+                  <th>Sigle</th>
                   <th>Structure </th>
                   <th>type structure</th>
                   <th>Profil </th>
-                 <th>niveau </th>
+                  <th>niveau </th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                   @foreach ($structures as $structure)
-                   
+
                   @if (sizeof($structure->child))
-                         
+
                     <tr>
+                      <td>{{$structure->code}}</td>
                       <td>{{$structure->libellestructure}}</td>
                       <td>{{$structure->typestructure->libellestructure}}</td>
                       <td>{{$structure->profil}}</td>
-                        <td>{{$structure->typestructure->niveau}}</td>  
+                        <td>{{$structure->typestructure->niveau}}</td>
                         <td>
                             <a  href="{{url('/display-update-structure-form/'.$structure->id)}}"  class="btn btn-outline-success"><i style="color: #007bff"  class="fa fa-edit"></i></a>
                             <button data-toggle="modal" data-target="{{'#suprimer'.$structure->id}}" class="btn btn-outline-danger"><i style="color: red" class="fa fa-trash"></i></button>
@@ -77,26 +79,26 @@
                    </div>
                </div>
               </div>
-            
+
             </div>
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
         </div>
-  
-                        
+
+
                           </td>
                       </tr>
                   @endif
-                   
+
                   @endforeach
-                 
-               
+
+
               </table>
               {{ $structures->onEachSide(5)->links() }}
         </div>
     </div>
-  
+
     <div class="row">
       <div class="col-12">
         <table id="typeenvoyeurTable" class="table table-bordered table-striped">

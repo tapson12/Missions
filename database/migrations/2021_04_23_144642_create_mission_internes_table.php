@@ -24,6 +24,7 @@ class CreateMissionInternesTable extends Migration
             $table->date('datedepart')->nullable();
             $table->date('dateretour')->nullable();
             $table->string('qrcode');
+            $table->string('reference');
             $table->boolean('active')->nullable()->default(true);
             $table->boolean('incidencefinanciere')->nullable()->default(false);
 

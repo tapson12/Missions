@@ -14,8 +14,17 @@
         </button>
       </div>
       <div class="modal-body">
-        
+
         <div class="row">
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="">Sigle</label>
+                  <input  type="text"   name="code" id="" class="form-control" placeholder="Le sigle de la structure" aria-describedby="helpId">
+                  <small id="helpId" class="text-muted" ><span style="color: red">Le sigle est obligatoire</span></small>
+                </div>
+              </div>
+
           <div class="col-lg-6">
             <div class="form-group">
               <label for="">Structure</label>
@@ -24,16 +33,19 @@
             </div>
           </div>
 
-          <div class="col-6">
-            <div class="form-group">
-              <label for="">Profil</label>
-              <input type="text"   name="profil" id="" class="form-control" placeholder="Le profil de la structure" aria-describedby="helpId" required>
-              <small id="helpId" class="text-muted" ><span style="color: red">le profil de la structure ne doit pas être vide</span></small>
-            </div>
-          </div>
+
         </div>
-        
+
         <div class="row">
+
+            <div class="col-6">
+                <div class="form-group">
+                  <label for="">Profil</label>
+                  <input type="text"   name="profil" id="" class="form-control" placeholder="Le profil de la structure" aria-describedby="helpId" required>
+                  <small id="helpId" class="text-muted" ><span style="color: red">le profil de la structure ne doit pas être vide</span></small>
+                </div>
+              </div>
+
           <div class="col-6">
             <div class="form-group">
               <label for="">Type de structure</label>
@@ -44,18 +56,24 @@
              </select>
             </div>
           </div>
-          <div class="col-6">
-            <div class="form-group">
-              <label for="">Structure parent</label>
-              <select name="structure_id" id=""  class="form-control">
-                <option value=""></option>
-                @foreach ($structures as $structure)
-               <option value="{{$structure->id}}">{{$structure->libellestructure}}</option>
-               @endforeach
-              </select>
-            </div>
-          </div>
-        </div> 
+
+
+        </div>
+        <div class="=row">
+
+            <div class="col-6">
+                <div class="form-group">
+                  <label for="">Structure parent</label>
+                  <select name="structure_id" id=""  class="form-control">
+                    <option value=""></option>
+                    @foreach ($structures as $structure)
+                   <option value="{{$structure->id}}">{{$structure->libellestructure}}</option>
+                   @endforeach
+                  </select>
+                </div>
+              </div>
+
+        </div>
       </div>
       <div class="modal-footer">
         <a href="{{url('/structures')}}" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></a>
@@ -63,8 +81,8 @@
       </div>
     </div>
   </form>
-  
-  
+
+
 </div>
 </div>
 
