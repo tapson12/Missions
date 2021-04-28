@@ -28,12 +28,9 @@ class StructureController extends Controller
 
     public function store(Request $request)
     {
-        
-
-        
 
         if (Auth::check()) {
-           
+
             $email = Auth::user()->email;
             $structure=new Structure();
             $structure->libellestructure=$request->libellestructure;
@@ -42,7 +39,7 @@ class StructureController extends Controller
             $structure->update_by=$email;
             $structure->typestructure()->associate($request->type_structure_id);
             $structure->structure()->associate($request->structure_id);
-    
+
             $structure->save();
             return redirect('/structures');
         }
@@ -71,7 +68,7 @@ class StructureController extends Controller
    public function edit(Request $request,$id)
    {
     if (Auth::check()) {
-           
+
         $email = Auth::user()->email;
         $structure= Structure::find($id);
         $structure->libellestructure=$request->libellestructure;
@@ -94,10 +91,10 @@ class StructureController extends Controller
    public function destroy($id)
    {
     if (Auth::check()) {
-           
+
         $email = Auth::user()->email;
         $structure= Structure::find($id);
-        
+
         $structure->delete();
         return redirect('/structures');
     }

@@ -21,12 +21,12 @@ class TypeVehiculeController extends Controller
     public function store(Request $request)
     {
         if (Auth::check()) {
-            $type=new TypeVehicule();
+            $typev=new TypeVehicule();
             $email = Auth::user()->email;
-            $type->libelletypevehicule=$request->libelletypevehicule;
-            $type->created_by=$email;
-            $type->update_by=$email;
-            $type->save();
+            $typev->libelletypevehicule=$request->libelletypevehicule;
+            $typev->created_by=$email;
+            $typev->update_by=$email;
+            $typev->save();
 
             return redirect('/type-vehicule');
         }
@@ -56,12 +56,12 @@ class TypeVehiculeController extends Controller
     public function edit(Request $request)
     {
         if (Auth::check()) {
-            $type= TypeVehicule::find($request->id);
+            $typev= TypeVehicule::find($request->id);
             $email = Auth::user()->email;
-            $type->libelletypevehicule=$request->libelletypevehicule;
-            $type->created_by=$email;
-            $type->update_by=$email;
-            $type->save();
+            $typev->libelletypevehicule=$request->libelletypevehicule;
+            $typev->created_by=$email;
+            $typev->update_by=$email;
+            $typev->save();
 
             return redirect('/type-vehicule');
         }
@@ -92,9 +92,9 @@ class TypeVehiculeController extends Controller
     public function destroy($id)
     {
         if (Auth::check()) {
-            $type= TypeVehicule::find($id);
+            $typev= TypeVehicule::find($id);
 
-            $type->delete();
+            $typev->delete();
 
             return redirect('/type-vehicule');
         }
