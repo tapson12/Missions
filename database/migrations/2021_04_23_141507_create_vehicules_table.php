@@ -17,7 +17,7 @@ class CreateVehiculesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('typevehicule_id')->unsigned();
             $table->string('immatriculation');
-            $table->string('libellevehicule');
+            $table->string('marque');
             $table->string("created_by");
             $table->string("update_by");
             $table->foreign('typevehicule_id')->references('id')->on('type_vehicules')->onDelete('cascade');
