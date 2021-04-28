@@ -43,7 +43,7 @@
         <div class="col-7">
             <div class="row">
                 <div class="col-6">
-                   <a href="#"> <img src="{{asset('/img/users.png')}}" alt=""></a> <br>
+                   <a href="{{url('/agents')}}"> <img src="{{asset('/img/users.png')}}" alt=""></a> <br>
                    <strong>GESTION DU PERSONNEL</strong>
                 </div>
                 <div class="col-6">

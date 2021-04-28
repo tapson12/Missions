@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Missions\Fonction;
+use Illuminate\Support\Facades\Auth;
 
 class FonctionController extends Controller
 {
@@ -39,6 +40,24 @@ class FonctionController extends Controller
     public function store(Request $request)
     {
         //
+
+        if (Auth::check()) {
+            $fonction=new Fonction();
+            $email = Auth::user()->email;
+            $fonction->libellefonction=$request->libellefonction;
+
+            $fonction->created_by=$email;
+            $fonction->update_by=$email;
+            $fonction->save();
+
+            return redirect('/fonction');
+        }
+        else
+        {
+            return redirect('/login');
+        }
+
+
     }
 
     /**
@@ -58,9 +77,24 @@ class FonctionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+        if (Auth::check()) {
+            $fonction= Fonction::find($request->id);
+            $email = Auth::user()->email;
+            $fonction->libellefonction=$request->libellefonction;
+
+            $fonction->update_by=$email;
+            $fonction->save();
+
+            return redirect('/fonction');
+        }
+        else
+        {
+            return redirect('/login');
+        }
+
     }
 
     /**
@@ -83,6 +117,19 @@ class FonctionController extends Controller
      */
     public function destroy($id)
     {
+
+
+        if (Auth::check()) {
+            $fonction= Fonction::find($id);
+
+            $fonction->delete();
+
+            return redirect('/fonction');
+        }
+        else
+        {
+            return redirect('/login');
+        }
         //
     }
 }

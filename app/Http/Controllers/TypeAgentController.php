@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Missions\TypeAgent;
+use Illuminate\Support\Facades\Auth;
 
 class TypeAgentController extends Controller
 {
@@ -41,6 +42,22 @@ class TypeAgentController extends Controller
     public function store(Request $request)
     {
         //
+
+        if (Auth::check()) {
+            $typeagent=new TypeAgent();
+            $email = Auth::user()->email;
+            $typeagent->typeagent=$request->typeagent;
+
+            $typeagent->created_by=$email;
+            $typeagent->update_by=$email;
+            $typeagent->save();
+
+            return redirect('/type-agent');
+        }
+        else
+        {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -60,9 +77,24 @@ class TypeAgentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+
+        if (Auth::check()) {
+            $typeagent= TypeAgent::find($request->id);
+            $email = Auth::user()->email;
+            $typeagent->typeagent=$request->typeagent;
+
+            $typeagent->update_by=$email;
+            $typeagent->save();
+
+            return redirect('/type-agent');
+        }
+        else
+        {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -86,5 +118,17 @@ class TypeAgentController extends Controller
     public function destroy($id)
     {
         //
+
+        if (Auth::check()) {
+            $typeagent= Typeagent::find($id);
+
+            $typeagent->delete();
+
+            return redirect('/type-agent');
+        }
+        else
+        {
+            return redirect('/login');
+        }
     }
 }
