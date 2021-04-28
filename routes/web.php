@@ -57,6 +57,7 @@ Route::get('/delete-typeagent/{id}',[App\Http\Controllers\TypeAgentController::c
 
 Route::get('/agents',[App\Http\Controllers\AgentController::class, 'index']);
 Route::post('/save-agent',[App\Http\Controllers\AgentController::class, 'store']);
+Route::post('/save-affectation',[App\Http\Controllers\AgentController::class, 'saveaffectation']);
 
 
 Auth::routes();

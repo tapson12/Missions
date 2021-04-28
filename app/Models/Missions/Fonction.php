@@ -18,6 +18,6 @@ class Fonction extends Model
      */
     public function agent()
     {
-        return $this->belongsToMany(Role::class, 'role_user_table', 'user_id', 'role_id');
+        return $this->belongsToMany(Agent::class, 'affections', 'agent_id', 'fonction_id');
     }
 }

@@ -21,15 +21,7 @@ class Agent extends Model
         return $this->belongsTo(TypeAgent::class, 'type_agent_id');
     }
 
-    /**
-     * The fonction that belong to the Agent
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function fonction()
-    {
-        return $this->belongsToMany(Fonction::class, 'fonction_agents', 'agent_id', 'fonction_id');
-    }
+    
 
     /**
      * The respon that belong to the Agent
@@ -50,6 +42,13 @@ class Agent extends Model
     {
         return $this->belongsToMany(Structure::class, 'affectations', 'agent_id', 'structure_id');
     }
+
+    
+    public function fonction()
+    {
+        return $this->belongsToMany(Fonction::class, 'affectations', 'agent_id', 'fonction_id');
+    }
+    
 
     /**
      * The roles that belong to the Agent
