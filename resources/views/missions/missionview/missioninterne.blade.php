@@ -4,9 +4,9 @@
 
 
 
-<div class="row" style="margin-top: 5%;margin-left: -30%; margin-right: +20%">
+<div class="row" style="margin-top: 5%;margin-left: -30%; margin-right: +10%">
   <div class="card-body">
-    <form action="{{url('/save-structure')}}" method="POST">
+    <form action="" method="POST">
       @csrf
     <div class="modal-content">
       <div class="modal-header modal-header-designed">
@@ -16,113 +16,181 @@
         </button>
       </div>
       <div class="modal-body">
-
-        <div class="row">
-            <div class="col-sm-8">
+        <fieldset style="border: 2px solid #F37622; width:850px; background:#E9F3E6">
+            <legend>Saisir une mission</legend>
+        <div class="row" style="margin-left: 5%">
+            <div class="col-sm-9">
                 <div class="form-group">
-                  <label for="">Structure</label>
-                 <select name="structure_id" id="" class="form-control" placeholder="Le libelle de la structure" >
-                  {{-- @foreach ($structures as $structure)
-                  <option value="{{$structure->id}}">{{$structure->libellestructure}}</option>
-                  @endforeach --}}
+                 <select name="structure_id" id="" class="form-control">
+                    <option value="">Choisissez la structure</option>
                  </select>
                 </div>
               </div>
         </div>
 
-        <div class="row">
-          <div class="col-sm-8">
-            <div class="form-group">
-              <label for="">Direction technique</label>
-              <input  type="text"   name="libellestructure" id="" class="form-control" placeholder="Le libelle de la structure" aria-describedby="helpId">
-              <small id="helpId" class="text-muted" ><span style="color: red">le libelle de la structure ne doit pas être vide</span></small>
-            </div>
-          </div>
+        <div class="row" style="margin-left: 5%">
+            <div class="col-sm-9">
+                <div class="form-group">
+                 <select name="structure_id" id="" class="form-control">
+                    <option value="">Choisissez la direction technique</option>
+                 </select>
+                </div>
+              </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-8">
+        <div class="row" style="margin-left: 5%">
+            <div class="col-sm-9">
               <div class="form-group">
-                <label for="">Objet</label>
-                <textarea id="objet" name="objet" rows="2" cols="90">
-
-                    </textarea>
-                <input  type="text"   name="libellestructure" id="" class="form-control" placeholder="Le libelle de la structure" aria-describedby="helpId">
-                <small id="helpId" class="text-muted" ><span style="color: red">le libelle de la structure ne doit pas être vide</span></small>
-              </div>
+                <textarea placeholder="Saisissez l'objet de votre mission" id="objet" name="objet" rows="2" cols="80"></textarea>
+                </div>
             </div>
           </div>
 
-        {{-- <div class="row">
+          <div class="row" style="margin-left: 5%">
+            <div class="col col-lg-3">
+              <div class="form-group">
+                <input id="datedebut" type="date" value="datedebut" class="form-control">
+              </div>
+            </div>
+            <div class="col col-lg-3">
+              <div class="form-group">
+                <input type="date" id="datefin" value="datefin" class="form-control">
+              </div>
+            </div>
 
-            <div class="col-6">
+            <div class="col col-lg-3">
                 <div class="form-group">
-                  <label for="">Profil</label>
-                  <input type="text"   name="profil" id="" class="form-control" placeholder="Le profil de la structure" aria-describedby="helpId" required>
-                  <small id="helpId" class="text-muted" ><span style="color: red">le profil de la structure ne doit pas être vide</span></small>
+                 <select name="structure_id" id="" class="form-control">
+                    <option value="">Choisissez l'immatriculation du véhicule</option>
+                 </select>
+                </div>
+              </div>
+              <div class="col col-lg-3">
+                <div class="form-group">
+                    <button class="btn btn-info">Nv. véhicule   <i class="fa fa-car"></i></button>
+                </div>
+              </div>
+            </fieldset>
+
+          </div>
+
+
+
+        <fieldset style="border: 2px solid #F37622; width:850px; margin-top:30px; background:#E9F3E6">
+            <legend>Lieux de la mission</legend>
+
+        <div class="row" style="margin-top: 20px; margin-left:5%">
+            <div class="col col-lg-3">
+                <div class="form-group">
+                 <select name="structure_id" id="" class="form-control">
+                    <option value="">Choisissez la région</option>
+                 </select>
+                </div>
+              </div>
+            <div class="col col-lg-3">
+                <div class="form-group">
+                 <select name="structure_id" id="" class="form-control">
+                    <option value="">Choisissez la province</option>
+                 </select>
                 </div>
               </div>
 
-          <div class="col-6">
+            <div class="col col-lg-3">
+                <div class="form-group">
+                 <select name="structure_id" id="" class="form-control">
+                    <option value="">Choisissez la commune</option>
+                 </select>
+                </div>
+              </div>
+
+              <div class="col col-lg-3">
+                <div class="form-group">
+                 <button type="button" class="btn btn-info">Insérer le lieu   <i class="fa fa-map-marked-alt"></i></button>
+                </div>
+              </div>
+
+          </div>
+
+    <div class="row" style="margin-top: 5%; margin-right:24%; margin-left:5%">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <table id="" class="table table-striped">
+                <thead style="background-color: #019d4a;color:white;opacity: .8;">
+                <tr>
+                  <th>Régions</th>
+                  <th>Provinces</th>
+                  <th>Communes</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                </tbody>
+
+              </table>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset style="border: 2px solid #F37622; width:850px; margin-top : 30px; background:#E9F3E6">
+    <legend>Membres de la mission</legend>
+
+    <div class="row" style="margin-top: 5%; margin-right:24%;margin-left:5%">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <table id="" class="table table-striped">
+                <thead style="background-color: #019d4a;color:white;opacity: .8;">
+                <tr>
+                  <th>Matricule</th>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Structure</th>
+                  <th>Resp.</th>
+                  <th>Actions</th>
+                  <th>
+                    <button class="btn btn-info">Les participants<i class="fa fa-user-friends"></i></button>
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                </tbody>
+
+              </table>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset style="border: 2px solid #F37622; width:850px; margin-top:20px; background:#E9F3E6">
+    <legend >Source de financement</legend>
+
+    <div class="row" style='margin-left:10%'>
+        <div class="col col-lg-3">
             <div class="form-group">
-              <label for="">Type de structure</label>
-             <select name="type_structure_id" id="" class="form-control" >
-              @foreach ($types as $type)
-              <option value="{{$type->id}}">{{$type->libellestructure}}</option>
-              @endforeach
+             <select name="" id="" class="form-control">
+                <option value="">Financement hébergement et restauration</option>
+
+             </select>
+            </div>
+          </div>
+        <div class="col col-lg-3">
+            <div class="form-group">
+             <select name="" id="" class="form-control">
+                <option value="">Financement carburant</option>
+
              </select>
             </div>
           </div>
 
-
-        </div>
-        <div class="=row">
-
-            <div class="col-6">
-                <div class="form-group">
-                  <label for="">Structure parent</label>
-                  <select name="structure_id" id=""  class="form-control">
-                    <option value=""></option>
-                    @foreach ($structures as $structure)
-                   <option value="{{$structure->id}}">{{$structure->libellestructure}}</option>
-                   @endforeach
-                  </select>
-                </div>
-              </div>
-
-          <div class="col-6">
-            <div class="form-group">
-              <label for="">Structure parent</label>
-              <select name="structure_id" id=""  class="form-control">
-                <option value=""></option>
-                @foreach ($structures as $structure)
-               <option value="{{$structure->id}}">{{$structure->libellestructure}}</option>
-               @endforeach
-              </select>
-            </div>
-          </div>
-        </div> --}}
-        {{-- <div class="row">
-          <div class="col-6">
-            <div class="form-group">
-              <label for="">Responsable</label>
-              <select name="responsable" id=""  class="form-control">
-                <option value=""></option>
-                @foreach ($agents as $agent)
-               <option value="{{$agent->nom}} {{$agent->prenom}}">{{$agent->matricule}} {{$agent->nom}} {{$agent->prenom}}</option>
-               @endforeach
-              </select>
-            </div>
-          </div>
-        </div> --}}
       </div>
-      <div class="modal-footer">
-        <a href="{{url('/structures')}}" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></a>
+</fieldset>
+      </div>
+      <div class="modal-footer" >
+        <a href="" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></a>
         <button type="submit" class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></button>
       </div>
     </div>
   </form>
-
 
 </div>
 </div>
