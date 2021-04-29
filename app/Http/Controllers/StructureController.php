@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Missions\Structure;
 use App\Models\Missions\TypeStructure;
+use App\Models\Missions\Agent;
 use Illuminate\Support\Facades\Auth;
 class StructureController extends Controller
 {
@@ -22,8 +23,8 @@ class StructureController extends Controller
     {
         $types=TypeStructure::all();
         $structures=Structure::all();
-
-        return view('missions.missionview.newstructures',compact(['structures','types']));
+        $agents=Agent::all();
+        return view('missions.missionview.newstructures',compact(['structures','types','agents']));
     }
 
     public function store(Request $request)
@@ -31,10 +32,16 @@ class StructureController extends Controller
 
         if (Auth::check()) {
 
+            $validationdata=$request->validate([
+                'code'=>'required|unique:structures'
+            ]);
+
             $email = Auth::user()->email;
             $structure=new Structure();
+            $structure->code=$request->code;
             $structure->libellestructure=$request->libellestructure;
             $structure->profil=$request->profil;
+            $structure->responsable=$request->responsable;
             $structure->created_by=$email;
             $structure->update_by=$email;
             $structure->typestructure()->associate($request->type_structure_id);
@@ -60,9 +67,10 @@ class StructureController extends Controller
    {
     $types=TypeStructure::all();
     $structures=Structure::all();
+    $agents=Agent::all();
     $updatestructure=Structure::find($id);
 
-    return view('missions.missionview.updatestructures',compact(['updatestructure','structures','types']));
+    return view('missions.missionview.updatestructures',compact(['updatestructure','structures','types','agents']));
    }
 
    public function edit(Request $request,$id)
@@ -73,6 +81,7 @@ class StructureController extends Controller
         $structure= Structure::find($id);
         $structure->libellestructure=$request->libellestructure;
         $structure->profil=$request->profil;
+        $structure->responsable=$request->responsable;
         $structure->created_by=$email;
         $structure->update_by=$email;
         $structure->typestructure()->associate($request->type_structure_id);

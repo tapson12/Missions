@@ -11,13 +11,22 @@ class CreateStructuresTable extends Migration
      *
      * @return void
      */
+
+
+    public function down()
+    {
+        Schema::dropIfExists('structures');
+    }
+
     public function up()
     {
         Schema::create('structures', function (Blueprint $table) {
            $table->bigIncrements('id');
+           $table->string('code');
            $table->bigInteger('type_structure_id');
            $table->bigInteger('structure_id')->nullable();
            $table->string('libellestructure', 255);
+           $table->string('responsable');
            $table->boolean('type')->nullable()->default(false);
            $table->string('profil', 255)->nullable()->default('text');
            $table->foreign('type_structure_id')->references('id')->on('type_structures')->onDelete('cascade');
@@ -32,8 +41,5 @@ class CreateStructuresTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('structures');
-    }
+
 }

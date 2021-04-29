@@ -55,7 +55,7 @@
                           <br>
                           <div style="text-align: center; margin-left: -50%;"><strong>GESTION DES DEPLACEMENTS <br> (MISSIONS)</strong></div>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <a class="dropdown-item" href="#">Mission interne</a>
+                          <a class="dropdown-item" href="{{ url('/missioninterne') }}">Mission interne</a>
                           <a class="dropdown-item" href="#">Mission externe</a>
                           <a class="dropdown-item" href="#">Paramètre</a>
                         </div>

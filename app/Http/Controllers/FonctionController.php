@@ -42,6 +42,11 @@ class FonctionController extends Controller
         //
 
         if (Auth::check()) {
+            
+            $validata=$request->validate([
+                'libellefonction'=>'required|unique:fonctions'
+            ]);
+
             $fonction=new Fonction();
             $email = Auth::user()->email;
             $fonction->libellefonction=$request->libellefonction;

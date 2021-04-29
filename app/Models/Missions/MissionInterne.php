@@ -26,7 +26,7 @@ class MissionInterne extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function lieumission(): BelongsToMany
+    public function lieumission()
     {
         return $this->belongsToMany(LieuMission::class, 'lieu_mission_internes', 'agent_id', 'lieumission_id');
     }
@@ -41,5 +41,5 @@ class MissionInterne extends Model
         return $this->belongsTo(Vehicule::class, 'vehicule_id');
     }
 
-    
+
 }

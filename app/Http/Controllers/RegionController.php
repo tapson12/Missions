@@ -11,13 +11,16 @@ class RegionController extends Controller
     //
     public function index(){
         $regions=Region::paginate(10);
-        return view('missions.decoupage.region',compact(['regions']));
+        return view('missions.missionview.decoupage.region',compact(['regions']));
     }
 
     //insertion d'une nouvelle region
     public function store( Request $request ){
 
         if (Auth::check()) {
+            $validata=$request->validate([
+                'libelleregion'=>'required|unique:regions'
+            ]);
             $region = new Region();
             $email = Auth::user()->email;
             $region->libelleregion = ucwords($request->libelleregion);
@@ -39,6 +42,9 @@ class RegionController extends Controller
     public function edit(Request $request)
     {
         if (Auth::check()) {
+            $validata=$request->validate([
+                'libelleregion'=>'required|unique:regions'
+            ]);
             $region= Region::find($request->id);
             $email = Auth::user()->email;
             $region->libelleregion = ucwords($request->libelleregion);

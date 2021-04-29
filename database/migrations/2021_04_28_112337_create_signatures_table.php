@@ -16,12 +16,14 @@ class CreateSignaturesTable extends Migration
         Schema::create('signatures', function (Blueprint $table) {
             
             $table->bigIncrements('id');
-            $table->bigInteger('signature_1_id');
-            $table->bigInteger('signature_2_id');
+            $table->bigInteger('structure_id');
+            $table->string('signature_1');
+            $table->string('signature_2');
+            $table->string('distinction_signataire_1');
+            $table->foreign('structure_id')->references('id')->on('structures')->onDelete('cascade');
             $table->string('created_by');
             $table->string('update_by');
-            $table->foreign('signature_1_id')->references('id')->on('structures')->onDelete('cascade');           
-            $table->foreign('signature_2_id')->references('id')->on('structures')->onDelete('cascade');  
+
             $table->timestamps();
         });
     }

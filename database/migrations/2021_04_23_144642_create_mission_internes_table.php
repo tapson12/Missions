@@ -24,6 +24,7 @@ class CreateMissionInternesTable extends Migration
             $table->date('datedepart')->nullable();
             $table->date('dateretour')->nullable();
             $table->string('qrcode');
+            $table->string('reference');
             $table->boolean('active')->nullable()->default(true);
             $table->boolean('incidencefinanciere')->nullable()->default(false);
 
@@ -31,6 +32,14 @@ class CreateMissionInternesTable extends Migration
             $table->foreign('lieumission_id')->references('id')->on('lieu_missions')->onDelete('cascade');
             $table->foreign('vehicule_id')->references('id')->on('vehicules')->onDelete('cascade');
             $table->string('hebergement');
+            
+            $table->string('omprofilsignataire1', 255)->nullable()->default('text');
+            $table->string('omagentsignataire1', 255)->nullable()->default('text');
+            $table->string('omdistinctionsignataire1', 255)->nullable()->default('text');
+            $table->string('omprofilsignataire2', 255)->nullable()->default('text');
+            $table->string('omagentsignataire2', 255)->nullable()->default('text');
+            $table->string('omdistinctionsignataire2', 255)->nullable()->default('text');
+            
             $table->string('logement');
             $table->string("created_by");
             $table->string("update_by");

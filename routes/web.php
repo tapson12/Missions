@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,6 +96,16 @@ Route::post('/save-source-financement',[App\Http\Controllers\SourceFinancementCo
 Route::post('/update-source-financement',[App\Http\Controllers\SourceFinancementController::class, 'edit']);
 Route::get('/delete-source-financement/{id}',[App\Http\Controllers\SourceFinancementController::class, 'destroy']);
 
+Route::get('/signataire',[App\Http\Controllers\SignatureController::class, 'index']);
+Route::get('/display-signataire-form',[App\Http\Controllers\SignatureController::class, 'create']);
+Route::get('/get-signataire',[App\Http\Controllers\SignatureController::class, 'getsignatairebystructure']);
+Route::get('/get-signatairebyone',[App\Http\Controllers\SignatureController::class, 'getsignatairebysignataireone']);
+Route::get('/get-signatairebytwo',[App\Http\Controllers\SignatureController::class, 'getsignatairebysignatairetwo']);
+
+Route::post('/save-signature',[App\Http\Controllers\SignatureController::class, 'store']);
+
+
+Route::get('/missioninterne',[App\Http\Controllers\MissioninterneController::class, 'index'])->name('missioninterne');
 
 Auth::routes();
 

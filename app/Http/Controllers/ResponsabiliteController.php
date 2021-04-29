@@ -43,6 +43,9 @@ class ResponsabiliteController extends Controller
         //
 
         if (Auth::check()) {
+            $validata=$request->validate([
+                'code'=>'required|unique:responsabilites'
+            ]);
             $responsabilite=new Responsabilite();
             $email = Auth::user()->email;
             $responsabilite->code=$request->code;
@@ -81,6 +84,9 @@ class ResponsabiliteController extends Controller
         //
 
         if (Auth::check()) {
+            $validata=$request->validate([
+                'code'=>'required|unique:responsabilites'
+            ]);
             $responsabilite= Responsabilite::find($request->id);
             $email = Auth::user()->email;
             $responsabilite->code=$request->code;

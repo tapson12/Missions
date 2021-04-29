@@ -16,16 +16,13 @@
             </div>
         </div>
     </div>
-  @if($errors->first('libelletypevehicule')=='validation.required')
-  <div class="row">
-    <div class="col-12">
-      <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        le libelle ne doit pas être vide
-      </div>
-    </div>
+   @if (count($errors)>0)
+   <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h5><i class="icon fas fa-ban"></i> Erreur!</h5>
+    <div>le vehicule existe déja</div>
   </div>
-  @endif
+   @endif
     <div class="row" style="margin-top: 5%">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <table id="typeenvoyeurTable" class="table table-bordered table-striped">

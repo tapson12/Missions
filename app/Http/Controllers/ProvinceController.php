@@ -13,13 +13,18 @@ class ProvinceController extends Controller
     public function index(){
         $provinces=Province::paginate(10);
         $regions=Region::all();
-        return view('missions.decoupage.province',compact(['provinces','regions']));
+        return view('missions.missionview.decoupage.province',compact(['provinces','regions']));
     }
 
      //insertion d'une nouvelle province
      public function store( Request $request ){
 
         if (Auth::check()) {
+
+            $validata=$request->validate([
+                'libelleProvince'=>'required|unique:provinces'
+            ]);
+
             $province = new Province();
             $email = Auth::user()->email;
             $province->region_id = $request->idregion;
@@ -39,6 +44,9 @@ class ProvinceController extends Controller
     public function edit(Request $request)
     {
         if (Auth::check()) {
+            $validata=$request->validate([
+                'libelleProvince'=>'required|unique:provinces'
+            ]);
             $province = Province::find($request->id);
             $email = Auth::user()->email;
             $province->region_id = $request->idregion;

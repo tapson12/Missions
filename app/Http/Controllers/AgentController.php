@@ -19,10 +19,11 @@ class AgentController extends Controller
         $types=TypeAgent::all();
         $structures=Structure::all();
         $reponsabilites=Responsabilite::all();
+        $affectations=Affectation::all();
         $fonctions=Fonction::all();
         $agents=Agent::paginate(10);
 
-        return view('missions.missionview.agent',compact(['types','agents','structures','fonctions','reponsabilites']));
+        return view('missions.missionview.agent',compact(['types','agents','structures','fonctions','reponsabilites','affectations']));
     }
 
     public function store(Request $request)
@@ -30,10 +31,23 @@ class AgentController extends Controller
 
 
         if (Auth::check()) {
+         $nummatricule=str_replace(' ','',$request->matricule);
+           $messages=[
+                'matricule.required'=>"l'agent existe déja",
+                'matricule.unique'=>'le matricule existe déja',
+                'nom.required'=>'le nom est obligatoire',
+                'prenom.required'=>'le prenom est obligatoire'
+           ];
+            $validator = \Validator::make($request->all(), [
+                'matricule' => 'required|unique:agents',
+                'nom' => 'required',
+                'prenom'=>'required',
+            ],$messages);
 
             $email = Auth::user()->email;
             $agent=new Agent();
-            $agent->matricule=$request->matricule;
+            $nummatricule=str_replace(' ','',$request->matricule);
+            $agent->matricule=$nummatricule;
             $agent->nom=$request->nom;
             $agent->prenom=$request->prenom;
             $agent->created_by=$email;
@@ -46,8 +60,25 @@ class AgentController extends Controller
             $agent->agentactive=true;
             $agent->distinction=$request->distinction;
             $agent->typeagent()->associate($request->type_agent);
-            $agent->save();
-            return json_encode($agent);
+
+
+            if ($validator->fails()) {
+
+               return response()->json(array(
+                    'success' => false,
+                    'errors' => $validator->getMessageBag()->toArray()
+
+                ), 400);
+
+
+             }else
+             {
+                $agent->save();
+
+                return response()->json(array('success' => true), 200);
+             }
+
+
         }
         else
         {
