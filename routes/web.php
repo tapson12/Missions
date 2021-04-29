@@ -89,6 +89,13 @@ Route::get('/delete-typeagent/{id}',[App\Http\Controllers\TypeAgentController::c
 Route::get('/agents',[App\Http\Controllers\AgentController::class, 'index']);
 Route::post('/save-agent',[App\Http\Controllers\AgentController::class, 'store']);
 Route::post('/save-affectation',[App\Http\Controllers\AgentController::class, 'saveaffectation']);
+Route::get('/delete-agent/{id}',[App\Http\Controllers\AgentController::class, 'destroy']);
+
+
+Route::get('/source-financement',[App\Http\Controllers\SourceFinancementController::class, 'index']);
+Route::post('/save-source-financement',[App\Http\Controllers\SourceFinancementController::class, 'store']);
+Route::post('/update-source-financement',[App\Http\Controllers\SourceFinancementController::class, 'edit']);
+Route::get('/delete-source-financement/{id}',[App\Http\Controllers\SourceFinancementController::class, 'destroy']);
 
 
 Auth::routes();

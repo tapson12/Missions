@@ -52,8 +52,8 @@
             <a class="dropdown-item" href="{{url('/structures')}}">structure</a>
 
 
-            <a class="dropdown-item" href="{{url('/type-structure')}}">structure</a>
-            <a class="dropdown-item" href="{{url('/contributions')}}">type structure</a>
+
+
 
 
           </div>
@@ -71,6 +71,7 @@
             <a class="dropdown-item" href="{{url('/fonction')}}">Fonctions</a>
             <a class="dropdown-item" href="{{ url('/responsabilite') }}">Responsabilités</a>
             <a class="dropdown-item" href="{{url('/centre-formation')}}">Affectations</a>
+            <a class="dropdown-item" href="{{url('/source-financement')}}">Source fiancement</a>
           </div>
         </li>
         <li class="nav-item dropdown">

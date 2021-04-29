@@ -16,12 +16,12 @@
             </div>
         </div>
     </div>
-  @if($errors->first('fonction')=='validation.required')
+  @if($errors->first('sourcefinancement')=='validation.required')
   <div class="row">
     <div class="col-12">
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        le type agent ne doit pas être vide
+        la source de financement ne doit pas être vide
       </div>
     </div>
   </div>
@@ -31,28 +31,27 @@
             <table id="typeenvoyeurTable" class="table table-bordered table-striped">
                 <thead style="background-color: #019d4a;color:white;opacity: .8;">
                 <tr>
-                  <th>Code Responsabilité </th>
+                  <th>Source Financement </th>
 
                   <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody><i class="
-                    fas fa-signal-3    "></i>
-                  @foreach ($responsabilites as $responsabilite)
+                <tbody>
+                  @foreach ($sourcefinancements as $sourcefinancement)
                   <tr>
-                    <td>{{$responsabilite->code}}</td>
+                    <td>{{$sourcefinancement->libellesourcefinancement}}</td>
 
                       <td>
-                          <button  data-toggle="modal" data-target="{{'#modifier'.$responsabilite->id}}"  class="btn btn-outline-success"><i style="color: #007bff"  class="fa fa-edit"></i></button>
-                          <button data-toggle="modal" data-target="{{'#suprimer'.$responsabilite->id}}" class="btn btn-outline-danger"><i style="color: red" class="fa fa-trash"></i></button>
+                          <button  data-toggle="modal" data-target="{{'#modifier'.$sourcefinancement->id}}"  class="btn btn-outline-success"><i style="color: #007bff"  class="fa fa-edit"></i></button>
+                          <button data-toggle="modal" data-target="{{'#suprimer'.$sourcefinancement->id}}" class="btn btn-outline-danger"><i style="color: red" class="fa fa-trash"></i></button>
 
-                        <div class="modal fade" id="{{'modifier'.$responsabilite->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="{{'modifier'.$sourcefinancement->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
-                            <form action="{{url('/update-responsabilite')}}" method="POST">
+                            <form action="{{url('/update-source-financement')}}" method="POST">
                               @csrf
                             <div class="modal-content">
                               <div class="modal-header modal-header-designed">
-                                <h5 class="modal-title" id="exampleModalLabel">Ajouter une Responsabilite</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter une Source Financement</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -60,15 +59,15 @@
                               <div class="modal-body">
                                 <div class="row">
                                   <div class="col-6">
-                                    <input hidden name="id" value="{{$responsabilite->id}}" type="text">
+                                    <input hidden name="id" value="{{$sourcefinancement->id}}" type="text">
                                   </div>
                                 </div>
                                   <div class="row">
                                     <div class="col-lg-12">
                                       <div class="form-group">
-                                        <label for="">Responsabilité</label>
-                                        <input type="text" value="{{$responsabilite->code}}" name="code" id="" class="form-control" aria-describedby="helpId" required/>
-                                        <small id="helpId" class="text-muted" ><span style="color: red">Responsabilite obligatoire</span></small>
+                                        <label for="">Source Financement</label>
+                                        <input type="text" value="{{$sourcefinancement->libellesourcefinancement}}" name="libellesourcefinancement" id="" class="form-control" placeholder="Fonction" aria-describedby="helpId" required/>
+                                        <small id="helpId" class="text-muted" ><span style="color: red">La source de financement est obligatoire</span></small>
                                       </div>
                                     </div>
                                   </div>
@@ -84,11 +83,11 @@
                         </div>
 
 
-    <div class="modal fade" id="{{'suprimer'.$responsabilite->id}}">
+    <div class="modal fade" id="{{'suprimer'.$sourcefinancement->id}}">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header modal-delete-header">
-              <h4 class="modal-title">Supprimer une Responsabilité</h4>
+              <h4 class="modal-title">Supprimer une source de financement</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -105,7 +104,7 @@
                       <div class="row">
                         <div class="col-lg-12 col-sm-12  col-md-12">
                           <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
-                          <a href="{{url('/delete-responsabilite/'.$responsabilite->id)}}" class="btn btn-danger">supprimer <i class="fa fa-trash" style="color: white"></i></a>
+                          <a href="{{url('/delete-source-financement/'.$sourcefinancement->id)}}" class="btn btn-danger">supprimer <i class="fa fa-trash" style="color: white"></i></a>
                         </div>
                       </div>
                    </div>
@@ -126,7 +125,7 @@
 
 
               </table>
-              {{ $responsabilites->onEachSide(5)->links() }}
+              {{ $sourcefinancements->onEachSide(5)->links() }}
         </div>
     </div>
 
@@ -136,11 +135,11 @@
 <!-- Modal -->
 <div class="modal fade" id="modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form action="{{url('/save-responsabilite')}}" method="POST">
+    <form action="{{url('/save-source-financement')}}" method="POST">
       @csrf
     <div class="modal-content">
       <div class="modal-header modal-header-designed">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter une Responsabilité</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une source de financement</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -150,9 +149,9 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="">Responsabilite</label>
-                <input type="text" name="code" id="" class="form-control" placeholder="Responsabilité" aria-describedby="helpId" required>
-                <small id="helpId" class="text-muted" ><span style="color: red">Responsabilite obligatoire</span></small>
+                <label for="">Source de Financement</label>
+                <input type="text" name="libellesourcefinancement" id="" class="form-control" placeholder="source de financement" aria-describedby="helpId" required>
+                <small id="helpId" class="text-muted" ><span style="color: red">la fonction doit pas etre vide</span></small>
               </div>
             </div>
           </div>

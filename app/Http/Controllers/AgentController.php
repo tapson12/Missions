@@ -30,7 +30,7 @@ class AgentController extends Controller
 
 
         if (Auth::check()) {
-           
+
             $email = Auth::user()->email;
             $agent=new Agent();
             $agent->matricule=$request->matricule;
@@ -54,12 +54,12 @@ class AgentController extends Controller
             return redirect('/login');
         }
 
-       
+
     }
 
     public function saveaffectation(Request $request)
     {
-        
+
 
         if(Auth::check())
         {
@@ -80,12 +80,33 @@ class AgentController extends Controller
             $affectation->fonction()->associate($fonction_id);
             $affectation->responsabilite()->associate($responsabilite_id);
             $affectation->save();
-             
-            
+
+
             return $request->all();
         }
 
         return redirect('/login');
-        
+
     }
+
+
+
+
+    public function destroy($id)
+    {
+     if (Auth::check()) {
+
+         //$email = Auth::user()->email;
+         $agents= Agent::find($id);
+
+         $agents->delete();
+         return redirect('/agents');
+     }
+     else
+     {
+         return redirect('/login');
+     }
+    }
+
+
 }
