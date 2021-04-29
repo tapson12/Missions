@@ -32,6 +32,10 @@ class StructureController extends Controller
 
         if (Auth::check()) {
 
+            $validationdata=$request->validate([
+                'code'=>'required|unique:structures'
+            ]);
+
             $email = Auth::user()->email;
             $structure=new Structure();
             $structure->code=$request->code;

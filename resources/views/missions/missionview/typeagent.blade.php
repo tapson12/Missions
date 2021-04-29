@@ -16,12 +16,12 @@
             </div>
         </div>
     </div>
-  @if($errors->first('typeagent')=='validation.required')
+  @if(count($errors)>0)
   <div class="row">
     <div class="col-12">
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        le type agent ne doit pas être vide
+       le type de l'agent existe déja
       </div>
     </div>
   </div>
