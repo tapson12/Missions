@@ -65,7 +65,6 @@
             <a class="dropdown-item" href="{{url('/type-agent')}}">Type agents</a>
             <a class="dropdown-item" href="{{url('/fonction')}}">Fonctions</a>
             <a class="dropdown-item" href="{{ url('/responsabilite') }}">Responsabilités</a>
-            <a class="dropdown-item" href="{{url('/centre-formation')}}">Affectations</a>
           </div>
         </li>
         <li class="nav-item dropdown">

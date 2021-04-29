@@ -16,12 +16,12 @@
             </div>
         </div>
     </div>
-  @if($errors->first('libellestructure')=='validation.required')
+  @if(count($errors)>0)
   <div class="row">
     <div class="col-12">
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        le libelle de la region ne doit pas être vide 
+        le libelle de type structure existe déja 
       </div>
     </div>
   </div>
@@ -58,6 +58,7 @@
                               </div>
                               <div class="modal-body">
                                 <div class="row">
+                                  
                                   <div class="col-6">
                                     <input hidden name="id" value="{{$type->id}}" type="text">
                                   </div>

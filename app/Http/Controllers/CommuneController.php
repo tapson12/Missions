@@ -13,13 +13,16 @@ class CommuneController extends Controller
     public function index(){
         $communes=Commune::paginate(10);
         $provinces=Province::all();
-        return view('missions.decoupage.commune',compact(['communes','provinces']));
+        return view('missions.missionview.decoupage.commune',compact(['communes','provinces']));
     }
 
      //insertion d'une nouvelle province
      public function store( Request $request ){
 
         if (Auth::check()) {
+            $validata=$request->validate([
+                'libelleCommune'=>'required|unique:communes'
+            ]);
             $commune = new Commune();
             $email = Auth::user()->email;
             $commune->province_id = $request->idprovince;
@@ -39,6 +42,9 @@ class CommuneController extends Controller
     public function edit(Request $request)
     {
         if (Auth::check()) {
+            $validata=$request->validate([
+                'libelleCommune'=>'required|unique:communes'
+            ]);
             $commune = Commune::find($request->id);
             $email = Auth::user()->email;
             $commune->province_id = $request->idprovince;

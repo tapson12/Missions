@@ -44,6 +44,9 @@ class TypeAgentController extends Controller
         //
 
         if (Auth::check()) {
+            $validdata=$request->validate([
+                'typeagent'=>'required|unique:type_agents'
+            ]);
             $typeagent=new TypeAgent();
             $email = Auth::user()->email;
             $typeagent->typeagent=$request->typeagent;

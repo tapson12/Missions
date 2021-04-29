@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-  @if($errors->first('libelletypevehicule')=='validation.required')
+  @if(count($errors)>0)
   <div class="row">
     <div class="col-12">
       <div class="alert alert-danger alert-dismissible">

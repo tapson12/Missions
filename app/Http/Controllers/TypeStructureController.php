@@ -20,7 +20,11 @@ class TypeStructureController extends Controller
 
     public function store(Request $request)
     {
+       
         if (Auth::check()) {
+            $validationdata=$request->validate([
+                'libellestructure'=>'required|unique:type_structures'
+            ]);
             $type=new TypeStructure();
             //recuperation de l'identifiant de l'utilisateur connécter
             $email = Auth::user()->email;
@@ -43,6 +47,9 @@ class TypeStructureController extends Controller
     public function edit(Request $request)
     {
         if (Auth::check()) {
+            $validationdata=$request->validate([
+                'libellestructure'=>'required|unique:type_structures'
+            ]);
             $type= TypeStructure::find($request->id);
             $email = Auth::user()->email;
             $type->libellestructure=$request->libellestructure;

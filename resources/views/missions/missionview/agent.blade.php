@@ -25,7 +25,7 @@
                       </div>
                     </div>
                     <div class="row" style="margin-top: 2%;">
-                      <div class="col-12">
+                      <div class="col-8">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <button type="button" class="btn btn-success">
@@ -33,20 +33,21 @@
                             </button>
                           </div>
                           <!-- /btn-group -->
-                          <input type="text" class="form-control" placeholder="Rechercher un agent par son numéro matricule ou son nom">
+                          <input type="text" class="form-control" id="reseach_id" placeholder="Rechercher un agent par son numéro matricule ou son nom">
                         </div>
                       </div>
                     </div>
+               
                     <div class="row">
-                      <div class="col-12">
+                      <div class="col-11">
                       <table id="table_agent" class="table table-bordered table-striped">
                             <thead style="background-color: #019d4a;color:white;opacity: .8;">
                             <tr>
                               <th>Matricule </th>
                               <th>Nom et prenom</th>
-                              <th>Date de naissance</th>
+                              <th data-searchable=false>Date de naissance</th>
                               <th>Type d agent </th>
-                              <th>Sexe </th>
+                              <th data-searchable=false>Sexe </th>
 
                               <th>Actions</th>
                             </tr>
@@ -78,7 +79,21 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <div class="modal-body">
+                          <div class="modal-body" >
+                            <div class="alert alert-success alert-dismissible" id="agent_success_save_alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                              <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                              <div>Enregistrement reusit avec succès</div>
+                            </div>
+                            <div class="row" id="alert_agent">
+                              <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible">
+                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                  <h5><i class="icon fas fa-ban"></i> Erreur !</h5>
+                                  <div id="messageerror">Verifier les données saisies</div>
+                                </div>
+                              </div>
+                            </div>
                             <form action="#" method="post">
                               <input type="text" value="{{csrf_token()}}" name="_token" id="token" hidden="true">
                               <div class="row">
@@ -189,40 +204,55 @@
                         </a>
                       </div>
                     </div>
-
+                    <div class="row" style="margin-top: 2%;">
+                      <div class="col-8">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <button type="button" class="btn btn-success">
+                              <i class="fa fa-search"></i>
+                            </button>
+                          </div>
+                          <!-- /btn-group -->
+                          <input type="text" class="form-control" id="reseach_affectation_id" placeholder="Rechercher un agent par son numéro matricule ou son nom">
+                        </div>
+                      </div>
+                    </div>
+               
                     <div class="row" style="margin-top: 5%;">
-                      <table id="table_agent" class="table table-bordered table-striped">
-                        <thead style="background-color: #019d4a;color:white;opacity: .8;">
-                        <tr>
-                          <th>Matricule </th>
-                          <th>Nom et prenom</th>
-                          <th>Structure</th>
-                          <th>fonction </th>
-                          <th>responsabilité </th>
-                          <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody id="table_agent_body">
-                          @foreach ($affectations as $affectation)
-                              <tr>
-                                <td>{{$affectation->agent->matricule}}</td>
-                                <td>{{$affectation->agent->nom}} {{$affectation->agent->prenom}} </td>
-                                <td>
-                                  {{$affectation->structure->libellestructure}}
-                                </td>
-                                <td>
-                                  
-                                  {{$affectation->fonction->libellefonction}}
-                                </td>
-                                <td>{{$affectation->responsabilite->code}}</td>
-                                <td>
-                                  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                </td>
-                              </tr>
-                          @endforeach
-                        </tbody>
-
-                      </table>
+                      <div class="col-11">
+                        <table id="table_affectation" class="table table-bordered table-striped">
+                          <thead style="background-color: #019d4a;color:white;opacity: .8;">
+                          <tr>
+                            <th>Matricule </th>
+                            <th>Nom et prenom</th>
+                            <th>Structure</th>
+                            <th>fonction </th>
+                            <th>responsabilité </th>
+                            <th>Actions</th>
+                          </tr>
+                          </thead>
+                          <tbody id="table_affectation_body">
+                            @foreach ($affectations as $affectation)
+                                <tr>
+                                  <td>{{$affectation->agent->matricule}}</td>
+                                  <td>{{$affectation->agent->nom}} {{$affectation->agent->prenom}} </td>
+                                  <td>
+                                    {{$affectation->structure->libellestructure}}
+                                  </td>
+                                  <td>
+                                    
+                                    {{$affectation->fonction->libellefonction}}
+                                  </td>
+                                  <td>{{$affectation->responsabilite->code}}</td>
+                                  <td>
+                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                  </td>
+                                </tr>
+                            @endforeach
+                          </tbody>
+  
+                        </table>
+                      </div>
                     </div>
                   </div>
 

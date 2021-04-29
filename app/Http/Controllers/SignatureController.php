@@ -83,4 +83,13 @@ class SignatureController extends Controller
             return redirect('/signataire');
         }
     }
+
+    public function update($id)
+    {
+        $signature=Signature::find($id);
+        $agents=Agent::all();
+        $structures=Structure::all();
+
+        return view('missions.missionview.updatesignataire',compact(['agents','structures','signature']));
+    }
 }

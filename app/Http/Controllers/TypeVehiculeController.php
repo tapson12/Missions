@@ -20,6 +20,9 @@ class TypeVehiculeController extends Controller
     public function store(Request $request)
     {
         if (Auth::check()) {
+            $validatedata=$request->validate([
+                'libelletypevehicule'=>'required|unique:type_vehicules'
+            ]);
             $typev=new TypeVehicule();
             $email = Auth::user()->email;
             $typev->libelletypevehicule=$request->libelletypevehicule;
@@ -55,6 +58,9 @@ class TypeVehiculeController extends Controller
     public function edit(Request $request)
     {
         if (Auth::check()) {
+            $validatedata=$request->validate([
+                'libelletypevehicule'=>'required|unique:type_vehicules'
+            ]);
             $typev= TypeVehicule::find($request->id);
             $email = Auth::user()->email;
             $typev->libelletypevehicule=$request->libelletypevehicule;
