@@ -25,7 +25,7 @@
   @endif
     <div class="row" style="margin-top: 5%">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <table id="typeenvoyeurTable" class="table table-bordered table-striped">
+            <table id="signataire_table" class="table table-bordered table-striped">
                 <thead style="background-color: #019d4a;color:white;opacity: .8;">
                 <tr>
                   <th>Structure </th>
