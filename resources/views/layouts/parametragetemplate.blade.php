@@ -104,7 +104,7 @@
             <a href="{{url('/signataire')}}" class="nav-link">
              <i class="fa fa-user fa-2x icon_color"></i>Signataire
             </a>
-           
+
           </li>
 
 
@@ -184,6 +184,7 @@
 <script src="{{asset('dist/js/selectscript.js')}}"></script>
 <script src="{{asset('dist/js/statistique.js')}}"></script>
 <script src="{{asset('dist/js/signatures.js')}}"></script>
+<script src="{{asset('dist/js/mission.js')}}"></script>
 </body>
 </html>
 
