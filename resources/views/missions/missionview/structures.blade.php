@@ -30,13 +30,9 @@
                 <tr>
                   <th>Sigle</th>
                   <th>Structure </th>
-                  <th>type structure</th>
-                  <th>Profil </th>
-                  <th>niveau </th>
                   <th>Type structure</th>
-                  <th>Profil</th>
-                  <th>Niveau</th>
-                  <th>Responsable</th>
+                  <th>Profil </th>
+                  <th>Niveau </th>
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -45,15 +41,12 @@
 
                   @if (sizeof($structure->child))
 
-                  @if (sizeof($structure->child))
                     <tr>
                       <td>{{$structure->code}}</td>
                       <td>{{$structure->libellestructure}}</td>
                       <td>{{$structure->typestructure->libellestructure}}</td>
                       <td>{{$structure->profil}}</td>
-                        <td>{{$structure->typestructure->niveau}}</td>
-                        <td>{{$structure->typestructure->niveau}}</td>
-                        <td>{{$structure->responsable}}</td>
+                      <td>{{ $structure->niveau }}</td>
                         <td>
                             <a  href="{{url('/display-update-structure-form/'.$structure->id)}}"  class="btn btn-outline-success"><i style="color: #007bff"  class="fa fa-edit"></i></a>
                             <button data-toggle="modal" data-target="{{'#suprimer'.$structure->id}}" class="btn btn-outline-danger"><i style="color: red" class="fa fa-trash"></i></button>
@@ -98,7 +91,7 @@
                       </tr>
                   @endif
 
-                      @endif
+
                   @endforeach
 
 

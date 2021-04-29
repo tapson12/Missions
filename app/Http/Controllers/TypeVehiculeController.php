@@ -12,7 +12,6 @@ class TypeVehiculeController extends Controller
     public function index()
     {
         $typevehicules=TypeVehicule::paginate(10);
-
         return view('missions.missionview.typevehicule',compact(['typevehicules']));
     }
 

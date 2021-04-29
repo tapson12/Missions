@@ -92,6 +92,7 @@ Route::post('/save-affectation',[App\Http\Controllers\AgentController::class, 's
 Route::get('/signataire',[App\Http\Controllers\SignatureController::class, 'index']);
 Route::get('/display-signataire-form',[App\Http\Controllers\SignatureController::class, 'create']);
 
+Route::get('/missioninterne',[App\Http\Controllers\MissioninterneController::class, 'index'])->name('missioninterne');
 
 Auth::routes();
 
