@@ -44,7 +44,7 @@ $(document).ready(function() {
             }
         }).done(function(data){
             
-           
+           console.log(data);
            
             if(!(data.length==0))
             {
@@ -62,7 +62,9 @@ $(document).ready(function() {
 
     $("#structure_id").on('change',function() {
        var codestructure=this.value;
-        
+       $("#distinction_1").empty();
+       $("#distinction_2").empty();
+       
        $.ajax({
         url: '/get-signataire',
         type:'get',
@@ -71,11 +73,17 @@ $(document).ready(function() {
         }
     }).done(function(data){
         
-        console.log(data);
        
-        if(!(data.length==0))
+       
+        if(data!=undefined && data.length >0)
         {
             
+            
+            $("#signataire_1").append("<option selected value='"+data[0][0].matricule+"'>"+data[0][0].nom+' '+data[0][0].prenom+"</option>")
+            $("#distinction_1").val(data[0][0].distinction);
+
+           $("#signataire_2").append("<option selected value='"+data[1][0].matricule+"'>"+data[1][0].nom+' '+data[1][0].prenom+"</option>")
+            $("#distinction_2").val(data[1][0].distinction) 
         }
           
     });

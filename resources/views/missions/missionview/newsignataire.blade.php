@@ -4,7 +4,7 @@
 
 <div class="row" style="margin-top: 5%;margin-left: -50%">
   <div class="card-body">
-    <form action="{{url('/save-structure')}}" method="POST">
+    <form action="{{url('/save-signature')}}" method="POST">
       <input type="text" value="{{csrf_token()}}" name="_token" id="token" hidden="true">
     <div class="modal-content">
       <div class="modal-header modal-header-designed">
@@ -33,6 +33,7 @@
               <label for="">Signataire 1</label>
              <select name="signataire_1" id="signataire_1" class="form-control" >
               @foreach ($agents as $agent)
+              
               <option value="{{$agent->matricule}}">{{$agent->nom}} {{$agent->prenom}}</option>
               @endforeach
              </select>
@@ -74,8 +75,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="{{url('/structures')}}" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></a>
-        <a href="javascript:void(0)" onclick="savesignataire()" class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></a>
+        <a href="{{url('/signataire')}}" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></a>
+        <button type="submit"  class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></button>
       </div>
     </div>
   </form>
