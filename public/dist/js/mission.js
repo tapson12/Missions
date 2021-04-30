@@ -2,13 +2,21 @@ $(document).ready(function() {
     $("#mission_structure_id").select2();
     $("#immat_id").select2();
 
+   
+
     $("#btn_insert_lieu_mission").on('click',function() {
         var region=$("#mission_region_id option:selected").text();
         var province=$("#mission_province_id option:selected").text();
         var commune=$("#mission_commune_id option:selected").text();
+        
+        $("#tbody_lieux_mission").append("<tr><td>"+region+"</td><td>"+province+"</td><td>"+commune+"</td><td><button type='button' class='btn btn-danger'><i class='fa fa-trash'></i></button></td></tr>");
 
-        $("#table_lieu_mission").append("<tr><td>"+region+"</td><td>"+province+"</td><td>"+commune+"</td><td><button class='btn btn-danger'><i class='fa fa-trash'></i></button></td></tr>");
     });
+  
+
+    $('#table_lieu_mission').on("click", "button", function(){
+        $(this).closest('tr').remove();
+  });
 
     $("#mission_structure_id").on('change',function() {
         var codestructure=this.value;

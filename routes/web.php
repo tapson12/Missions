@@ -109,8 +109,12 @@ Route::get('/missioninterne',[App\Http\Controllers\MissioninterneController::cla
 
 
 Route::post('/filter-structure',[App\Http\Controllers\MissioninterneController::class, 'filterstructure']);
+<<<<<<< HEAD
 Route::post('/filter-province',[App\Http\Controllers\MissioninterneController::class, 'filterprovince']);
 Route::post('/filter-commune',[App\Http\Controllers\MissioninterneController::class, 'filtercommune']);
+=======
+Route::get('/filter-agent-mission',[App\Http\Controllers\MissioninterneController::class, 'filteragent']);
+>>>>>>> b56af0eacd41496535b29f52efe680177881ab84
 
 Auth::routes();
 
