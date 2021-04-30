@@ -223,18 +223,17 @@
              
             <div class="row">
               <div class="col-11">
-                <table id="" class="table table-striped">
+                <table id="table_agent_mission_id" class="table table-striped">
                   <thead style="background-color: #019d4a;color:white;opacity: .8;">
                   <tr>
                     <th>Matricule</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
+                    <th>Nom Prenom</th>
                     <th>Structure</th>
                     <th>Resp.</th>
                     <th>Actions</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="agent_id_mission">
   
   
                   </tbody>
@@ -324,7 +323,12 @@
             </div>
           </div>
         </div>
-        <div class="row" style="height: 500px;overflow: scroll;">
+        <div class="row">
+          <div class="col-2">
+            <button id="insert_agent_to_mission" class="btn btn-warning"><i class="fa fa-plus fa-3x"></i></button>
+          </div>
+        </div>
+        <div class="row" style="height: 500px;overflow: scroll;margin-top: 2%;">
           <div class="col-12">
             <table id="membre_mission_table" class="table table-bordered table-striped">
               <thead style="background-color: #019d4a;color:white;opacity: .8;">
@@ -333,6 +337,7 @@
                 <th>Nom et prenom</th>
                 <th>Matricule </th>
                 <th>Structure</th>
+                <th>resp.</th>
               </tr>
               </thead>
               <tbody id="membre_mission_table_body">

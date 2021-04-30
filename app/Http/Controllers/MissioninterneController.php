@@ -75,9 +75,10 @@ class MissioninterneController extends Controller
     public function filteragent(Request $request)
     {
         $structures=DB::table('affectations')
-        ->select('agents.matricule','agents.nom','agents.prenom','structures.code')
-        ->join('structures','affectations.structure_id','=','structures.id')
+        ->select('agents.matricule','agents.nom','agents.prenom','structures.code','responsabilites.code as coderespond')
         ->join('agents','affectations.agent_id','=','agents.id')
+        ->join('structures','affectations.structure_id','=','structures.id')
+        ->join("responsabilites","responsabilites.id","=","affectations.responsabilite_id")
         ->where('structures.id','=',$request->codestructure)->get();
 
         return $structures;
