@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Missions\Structure;
+use App\Models\Missions\Vehicule;
+use App\Models\Missions\Region;
+use App\Models\Missions\Province;
+use App\Models\Missions\Commune;
+use App\Models\Missions\SourceFinancement;
+use App\Models\Missions\Signature;
+use DB;
 class MissioninterneController extends Controller
 {
     /**
@@ -13,7 +20,14 @@ class MissioninterneController extends Controller
      */
     public function index()
     {
-        return view ('missions\missionview\missioninterne');
+        $structures=Structure::all();
+        $vehicules=Vehicule::all();
+        $regions=Region::all();
+        $provinces=Province::all();
+        $communes=Commune::all();
+        $sourcefincancements=SourceFinancement::all();
+
+        return view ('missions\missionview\missioninterne',compact(['structures','vehicules','regions','provinces','communes','sourcefincancements']));
     }
 
     /**
@@ -35,6 +49,47 @@ class MissioninterneController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function filterstructure(Request $request)
+    {
+        $structures=Structure::with('child')->get();
+        $signature1=DB::table('signatures')
+            ->select('agents.nom','agents.prenom','agents.distinction')
+            ->join('agents','agents.matricule','=','signatures.signature_1')
+            ->where('structure_id','=',$request->codestructure)->get();
+
+            $signature2=DB::table('signatures')
+            ->select('agents.nom','agents.prenom','agents.distinction')
+            ->join('agents','agents.matricule','=','signatures.signature_2')
+            ->where('structure_id','=',$request->codestructure)->get();
+           $structuremission=$structures->find($request->codestructure);
+
+            return ["signataire1"=>$signature1,"signataire2"=>$signature2,"structure"=>$structuremission];
+
+    }
+
+// Filtre pour province
+    public function filterprovince(Request $request)
+    {
+
+        $province=DB::table('provinces')
+            ->select('provinces.libelleProvince','provinces.id')
+            ->where('provinces.region_id','=',$request->region_id)->get();
+        return ["province"=>$province];
+
+    }
+
+    //Filtre pour commune
+
+    public function filtercommune(Request $request)
+    {
+
+        $commune=DB::table('communes')
+            ->select('communes.libelleCommune','communes.id')
+            ->where('communes.province_id','=',$request->province_id)->get();
+        return ["commune"=>$commune];
+
     }
 
     /**

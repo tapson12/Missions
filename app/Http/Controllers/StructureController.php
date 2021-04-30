@@ -43,6 +43,7 @@ class StructureController extends Controller
             $structure->profil=$request->profil;
             $structure->responsable=$request->responsable;
             $structure->created_by=$email;
+            $structure->type=$request->isproject;
             $structure->update_by=$email;
             $structure->typestructure()->associate($request->type_structure_id);
             $structure->structure()->associate($request->structure_id);

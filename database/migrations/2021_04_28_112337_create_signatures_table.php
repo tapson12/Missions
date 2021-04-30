@@ -20,6 +20,7 @@ class CreateSignaturesTable extends Migration
             $table->string('signature_1');
             $table->string('signature_2');
             $table->string('distinction_signataire_1');
+            $table->string('distinction_signataire_2');
             $table->foreign('structure_id')->references('id')->on('structures')->onDelete('cascade');
             $table->string('created_by');
             $table->string('update_by');
