@@ -107,6 +107,9 @@ Route::post('/save-signature',[App\Http\Controllers\SignatureController::class, 
 
 Route::get('/missioninterne',[App\Http\Controllers\MissioninterneController::class, 'index'])->name('missioninterne');
 
+
+Route::post('/filter-structure',[App\Http\Controllers\MissioninterneController::class, 'filterstructure']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

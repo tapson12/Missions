@@ -42,7 +42,7 @@
                   
                          
                     <tr>
-                      <td>{{$signataire->structure->libellestructure}}</td>
+                      <td>{{$signataire->structure->code}}</td>
                       <td>{{$signataire->signature_1}}</td>
                       <td>{{$signataire->signature_2}}</td>
                         <td>{{$signataire->distinction_signataire_1}}</td>  
