@@ -61,7 +61,7 @@
             <div class="col col-lg-3">
                 <div class="form-group">
                  <select name="immat_id" id="immat_id" class="form-control">
-                    <option value="">Choisissez l'immatriculation du véhicule</option>
+                    <option value="">Choisissez l immatriculation du véhicule</option>
                  </select>
                 </div>
               </div>
@@ -82,14 +82,14 @@
         <div class="row" style="margin-top: 20px; margin-left:5%">
             <div class="col col-lg-3">
                 <div class="form-group">
-                 <select name="structure_id" id="" class="form-control">
-                    <option value="">Choisissez la région</option>
+                 <select name="region" id="" class="form-control">
+
                  </select>
                 </div>
               </div>
             <div class="col col-lg-3">
                 <div class="form-group">
-                 <select name="structure_id" id="" class="form-control">
+                 <select name="province" id="" class="form-control">
                     <option value="">Choisissez la province</option>
                  </select>
                 </div>
@@ -97,7 +97,7 @@
 
             <div class="col col-lg-3">
                 <div class="form-group">
-                 <select name="structure_id" id="" class="form-control">
+                 <select name="commune" id="" class="form-control">
                     <option value="">Choisissez la commune</option>
                  </select>
                 </div>
