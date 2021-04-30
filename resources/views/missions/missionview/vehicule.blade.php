@@ -38,7 +38,7 @@
                   @foreach ($vehicules as $vehicule)
                   <tr>
                     <td>{{ $vehicule->immatriculation }}</td>
-                    <td>{{ $vehicule->libellevehicule }}</td>
+                    <td>{{ $vehicule->marque }}</td>
                     <td>{{$vehicule->typevehicule->libelletypevehicule}}</td>
                       <td>
                           <button  data-toggle="modal" data-target="{{'#modifier'.$vehicule->id}}"  class="btn btn-outline-success"><i style="color: #007bff"  class="fa fa-edit"></i></button>
@@ -50,7 +50,7 @@
                               @csrf
                             <div class="modal-content">
                               <div class="modal-header modal-header-designed">
-                                <h5 class="modal-title" id="exampleModalLabel">Ajouter un véhicule</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Modifier un véhicule</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -75,7 +75,7 @@
                               <div class="col-lg-12">
                                 <div class="form-group">
                                   <label for="">Marque</label>
-                                  <input type="text" value="{{$vehicule->libellevehicule}}" name="libellevehicule" id="" class="form-control" placeholder="La marque du véhicule" aria-describedby="helpId"/>
+                                  <input type="text" value="{{$vehicule->marque}}" name="libellevehicule" id="" class="form-control" placeholder="La marque du véhicule" aria-describedby="helpId"/>
                                   <small id="helpId" class="text-muted" ><span style="color: red"></span></small>
                                 </div>
                               </div>

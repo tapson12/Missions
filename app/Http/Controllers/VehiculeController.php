@@ -87,7 +87,7 @@ class VehiculeController extends Controller
             $email = Auth::user()->email;
             $vehicule->typevehicule_id=$request->typevehicule;
             $vehicule->immatriculation=$request->immatriculation;
-            $vehicule->libellevehicule=$request->libellevehicule;
+            $vehicule->marque=$request->libellevehicule;
             $vehicule->created_by=$email;
             $vehicule->update_by=$email;
             $vehicule->save();
