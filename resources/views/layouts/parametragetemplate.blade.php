@@ -185,6 +185,7 @@
 <script src="{{asset('dist/js/statistique.js')}}"></script>
 <script src="{{asset('dist/js/signatures.js')}}"></script>
 <script src="{{asset('dist/js/mission.js')}}"></script>
+<script src="{{asset('dist/js/selectmembremission.js')}}"></script>
 </body>
 </html>
 

@@ -10,6 +10,7 @@ use App\Models\Missions\Province;
 use App\Models\Missions\Commune;
 use App\Models\Missions\SourceFinancement;
 use App\Models\Missions\Signature;
+use App\Models\Missions\TypeAgent;
 use DB;
 class MissioninterneController extends Controller
 {
@@ -20,14 +21,16 @@ class MissioninterneController extends Controller
      */
     public function index()
     {
+
         $structures=Structure::all();
         $vehicules=Vehicule::all();
         $regions=Region::all();
         $provinces=Province::all();
         $communes=Commune::all();
+        $types=TypeAgent::all();
         $sourcefincancements=SourceFinancement::all();
 
-        return view ('missions\missionview\missioninterne',compact(['structures','vehicules','regions','provinces','communes','sourcefincancements']));
+        return view ('missions\missionview\missioninterne',compact(['structures','vehicules','regions','provinces','communes','sourcefincancements','types']));
     }
 
     /**
@@ -67,6 +70,18 @@ class MissioninterneController extends Controller
 
             return ["signataire1"=>$signature1,"signataire2"=>$signature2,"structure"=>$structuremission];
         
+    }
+
+    public function filteragent(Request $request)
+    {
+        $structures=DB::table('affectations')
+        ->select('agents.matricule','agents.nom','agents.prenom','structures.code')
+        ->join('structures','affectations.structure_id','=','structures.id')
+        ->join('agents','affectations.agent_id','=','agents.id')
+        ->where('structures.id','=',$request->codestructure)->get();
+
+        return $structures;
+
     }
 
     /**

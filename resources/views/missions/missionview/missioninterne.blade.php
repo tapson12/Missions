@@ -192,23 +192,25 @@
   
             </div>
   
-      <div class="row" style="margin-top: 5%; margin-right:24%; margin-left:5%">
+      <div class="row" style="margin-top: 5%; margin-right:24%; margin-left:5%" >
           <div class="col-lg-12 col-md-12 col-sm-12">
-              <table id="table_lieu_mission" class="table table-striped">
-                  <thead style="background-color: #019d4a;color:white;opacity: .8;">
-                  <tr>
-                    <th>Régions</th>
-                    <th>Provinces</th>
-                    <th>Communes</th>
-                    <th>Actions</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-  
-  
-                  </tbody>
-  
-                </table>
+          <div style="height: 200px;overflow: scroll;">
+            <table id="table_lieu_mission" class="table table-striped" >
+              <thead style="background-color: #019d4a;color:white;opacity: .8;">
+              <tr>
+                <th>Régions</th>
+                <th>Provinces</th>
+                <th>Communes</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody id="tbody_lieux_mission" >
+
+
+              </tbody>
+
+            </table>
+          </div>
           </div>
       </div>
   </fieldset>
@@ -218,7 +220,10 @@
   
       <div class="row" style="margin-top: 5%; margin-right:24%;margin-left:5%">
           <div class="col-lg-12 col-md-12 col-sm-12">
-              <table id="" class="table table-striped">
+             
+            <div class="row">
+              <div class="col-11">
+                <table id="" class="table table-striped">
                   <thead style="background-color: #019d4a;color:white;opacity: .8;">
                   <tr>
                     <th>Matricule</th>
@@ -227,9 +232,6 @@
                     <th>Structure</th>
                     <th>Resp.</th>
                     <th>Actions</th>
-                    <th>
-                      <button class="btn btn-info">Les participants<i class="fa fa-user-friends"></i></button>
-                    </th>
                   </tr>
                   </thead>
                   <tbody>
@@ -238,17 +240,21 @@
                   </tbody>
   
                 </table>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-info" type="button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#selection_mission_membre"><i class="fa fa-user-friends"></i></button>
+              </div>
+            </div>
           </div>
       </div>
   </fieldset>
   
   <fieldset style="border: 2px solid #F37622; width:850px; margin-top:20px; background:#E9F3E6">
       <legend >Source de financement</legend>
-  
       <div class="row" style='margin-left:10%'>
           <div class="col col-lg-5">
               <div class="form-group">
-               <select name="" id="" class="form-control">
+               <select name="" id="hebergement_id" class="form-control">
                   <option value="">hébergement et restauration</option>
                   @foreach ($sourcefincancements as $source)
                       <option value="{{$source->id}}">{{$source->libellesourcefinancement}}</option>
@@ -258,7 +264,7 @@
             </div>
           <div class="col col-lg-5">
               <div class="form-group">
-               <select name="" id="" class="form-control">
+               <select name="" id="transport_id" class="form-control">
                   <option value="">Transport/carburant</option>
                   @foreach ($sourcefincancements as $source)
                   <option value="{{$source->id}}">{{$source->libellesourcefinancement}}</option>
@@ -273,13 +279,74 @@
           <a href="" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></a>
           <button type="submit" class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></button>
         </div>
-      
     </form>
     </div>
   </div>  
 </div>
 </div>
 
-
-
+<!-- Modal -->
+<div class="modal fade" id="selection_mission_membre" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Selectionner les membres de la mission</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="type_structure">Agent interne</label>
+              <input type="checkbox" checked id="check_type_structure" value="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="mission_structure_agent_id">Agent interne</label>
+              <select  class="form-control" name="mission_structure_agent_id" id="mission_structure_agent_id">
+                @foreach ($structures as $structure)
+                    <option value="{{$structure->id}}">{{$structure->code}}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="search_agent_mission">Recherche un agent</label>
+              <input type="text" class="form-control" id="rechercher"  placeholder="Rechercher l'agents" value="">
+            </div>
+          </div>
+        </div>
+        <div class="row" style="height: 500px;overflow: scroll;">
+          <div class="col-12">
+            <table id="membre_mission_table" class="table table-bordered table-striped">
+              <thead style="background-color: #019d4a;color:white;opacity: .8;">
+              <tr>
+                <th>Actions</th>
+                <th>Nom et prenom</th>
+                <th>Matricule </th>
+                <th>Structure</th>
+              </tr>
+              </thead>
+              <tbody id="membre_mission_table_body">
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Enregistrer <i class="fa fa-save"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
