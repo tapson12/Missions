@@ -230,7 +230,6 @@
 
             <div class="row">
               <div class="col-11">
-<<<<<<< HEAD
             <div  style="height: 400px;overflow: scroll">
               <table id="table_agent_mission_id" class="table table-striped">
                 <thead style="background-color: #019d4a;color:white;opacity: .8;">
@@ -249,7 +248,6 @@
 
               </table>
             </div>
-=======
                 <table id="" class="table table-striped">
                   <thead style="background-color: #019d4a;color:white;opacity: .8;">
                   <tr>
@@ -267,7 +265,6 @@
                   </tbody>
 
                 </table>
->>>>>>> 06d5df190d0b08c06d98f7f661568cca4c56abab
               </div>
               <div class="col-1">
                 <button class="btn btn-info" type="button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#selection_mission_membre"><i class="fa fa-user-friends"></i></button>
