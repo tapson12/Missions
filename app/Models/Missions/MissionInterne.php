@@ -41,5 +41,9 @@ class MissionInterne extends Model
         return $this->belongsTo(Vehicule::class, 'vehicule_id');
     }
 
+    public function paramsoussigne(){
+        return $this->belongsTo(Paramsoussigne::class, 'paramsoussigne_id');
+    }
+
 
 }

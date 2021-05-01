@@ -113,6 +113,8 @@ Route::post('/filter-province',[App\Http\Controllers\MissioninterneController::c
 Route::post('/filter-commune',[App\Http\Controllers\MissioninterneController::class, 'filtercommune']);
 Route::get('/filter-agent-mission',[App\Http\Controllers\MissioninterneController::class, 'filteragent']);
 Route::get('/filter-strucutre-mission',[App\Http\Controllers\MissioninterneController::class, 'filtrestructuremission']);
+Route::post('/save-mission',[App\Http\Controllers\MissioninterneController::class, 'store']);
+
 
 
 

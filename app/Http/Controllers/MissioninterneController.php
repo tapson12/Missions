@@ -58,6 +58,9 @@ class MissioninterneController extends Controller
     public function store(Request $request)
     {
         //
+        $lieuxmision=$request->lieux_mission;
+        $membremission=$request->membremission;
+        return $request;
     }
 
     public function filterstructure(Request $request)

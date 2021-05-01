@@ -248,23 +248,7 @@
 
               </table>
             </div>
-                <table id="" class="table table-striped">
-                  <thead style="background-color: #019d4a;color:white;opacity: .8;">
-                  <tr>
-                    <th>Matricule</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Structure</th>
-                    <th>Resp.</th>
-                    <th>Actions</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-
-
-                  </tbody>
-
-                </table>
+              
               </div>
               <div class="col-1">
                 <button class="btn btn-info" type="button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#selection_mission_membre"><i class="fa fa-user-friends"></i></button>

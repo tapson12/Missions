@@ -202,9 +202,50 @@ function savemission(){
     var hebergement=$("#hebergement_id").val();
     var transport=$("#transport_id").val();
     var lieux_mission=[];
-
+    var membremission=[];
+    var token=$('#token').val();
     $("#table_lieu_mission").closest('tr');
    
-    console.log(document.getElementById("table_lieu_mission").rows[1].cells[0].innerHTML);
+    var tablelieumision=document.getElementById("table_lieu_mission");
    
+    for (var i=1;i<tablelieumision.rows.length;i++) {
+        let row = tablelieumision.rows[i]
+        let col = row.cells[0]
+         lieux_mission.push(col.innerHTML);
+     }
+
+     var tablemembremission=document.getElementById("agent_id_mission");
+
+     for (var i=0;i<tablemembremission.rows.length;i++) {
+        let row = tablemembremission.rows[i]
+        let col = row.cells[0]
+        membremission.push(col.innerHTML);
+     }
+       
+     
+     $.ajax({
+        url: '/save-mission',
+        type:'post',
+        data: {
+            structure_id:structure_id,
+            objetmission:objetmission,
+             datedepart:datedepart,
+             datefin:datefin,
+             vehiculemission:vehiculemission,
+             chefmission:chefmission,
+            chauffeurmission:chauffeurmission,
+             hebergement:hebergement,
+             transport:transport,
+             lieux_mission:lieux_mission,
+             membremission:membremission,
+             "_token": token
+        }
+    }).done(function(data){
+        
+            console.log(data);
+       
+    });
+
+
 }
+    

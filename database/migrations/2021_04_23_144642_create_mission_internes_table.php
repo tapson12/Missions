@@ -18,6 +18,9 @@ class CreateMissionInternesTable extends Migration
 
             $table->bigInteger('structure_id');
             $table->bigInteger('lieumission_id');
+            
+            $table->bigInteger('timbre_id');
+            
             $table->bigInteger('vehicule_id');
             $table->string('objet');
 
@@ -31,6 +34,7 @@ class CreateMissionInternesTable extends Migration
             $table->foreign('structure_id')->references('id')->on('structures')->onDelete('cascade');
             $table->foreign('lieumission_id')->references('id')->on('lieu_missions')->onDelete('cascade');
             $table->foreign('vehicule_id')->references('id')->on('vehicules')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('hebergement');
             $table->string('logement');
             $table->string('omprofilsignataire1', 255)->nullable()->default('text');
@@ -41,7 +45,6 @@ class CreateMissionInternesTable extends Migration
             $table->string('omdistinctionsignataire2', 255)->nullable()->default('text');
             $table->string('chefmission', 255);
             $table->string('chauffeurmission', 255);
-            
            
             $table->string("created_by");
             $table->string("update_by");
