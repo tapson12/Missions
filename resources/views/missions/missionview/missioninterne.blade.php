@@ -35,7 +35,7 @@
                   </div>
                 </div>
           </div>
-  
+
           <div class="row" style="margin-left: 5%">
               <div class="col-sm-9">
                   <div class="form-group">
@@ -45,7 +45,7 @@
                   </div>
                 </div>
           </div>
-  
+
           <div class="row" style="margin-left: 5%">
               <div class="col-sm-11">
                 <div class="form-group">
@@ -53,7 +53,7 @@
                   </div>
               </div>
             </div>
-  
+
             <div class="row" style="margin-left: 5%">
               <div class="col col-lg-3">
                 <div class="form-group">
@@ -65,11 +65,11 @@
                   <input type="date" id="datefin" value="datefin" class="form-control">
                 </div>
               </div>
-  
+
               <div class="col col-lg-3">
                   <div class="form-group">
                    <select name="immat_id" id="immat_id" class="form-control">
-                      <option value="">Choisissez l'immatriculation du véhicule</option>
+                      <option value="">Choisissez limmatriculation du véhicule</option>
                       @foreach ($vehicules as $vehicule)
                       <option value="{{$vehicule->id}}">{{$vehicule->immatriculation}}</option>
                       @endforeach
@@ -101,7 +101,7 @@
                         <label for="interim">Interim</label>
                         <input id="mission_parinterim1" disabled type="checkbox" value="interim">
                       </div>
-                     
+
                     </div>
                     <div class="col-6">
                       <div class="form-group">
@@ -120,11 +120,11 @@
                   </strong>
 
                 </div>
-                <div id='mission_distinction_2'>Distinction signataire 2: 
+                <div id='mission_distinction_2'>Distinction signataire 2:
                   <strong id="display_distinction2">
-                    
+
                   </strong>
-         
+
                 </div>
                 <div class="row">
                   <div class="col-6">
@@ -132,7 +132,7 @@
                       <label for="interim">Interim</label>
                       <input disabled id="mission_parinterim2" type="checkbox" value="interim">
                     </div>
-                   
+
                   </div>
                   <div class="col-6">
                     <div class="form-group">
@@ -159,10 +159,10 @@
             </div>
             <br><br>
            </fieldset>
-              
+
           <fieldset style="border: 2px solid #F37622; width:850px; margin-top:30px; background:#E9F3E6">
               <legend>Lieux de la mission</legend>
-  
+
           <div class="row" style="margin-top: 20px; margin-left:5%">
               <div class="col col-lg-3">
                   <div class="form-group">
@@ -177,35 +177,28 @@
               <div class="col col-lg-3">
                   <div class="form-group">
                    <select name="mission_province_id" id="mission_province_id" class="form-control">
-                    <option value="''"></option>
-                    <option value="">Choisissez la province</option>
-                      @foreach ($provinces as $province)
-                          <option value="{{$province->id}}">{{$province->libelleProvince}}</option>
-                      @endforeach
+
+
                     </select>
                   </div>
                 </div>
-  
+
               <div class="col col-lg-3">
                   <div class="form-group">
                    <select name="mission_commune_id" id="mission_commune_id" class="form-control">
-                      <option value="''"></option>
-                    <option value="">Choisissez la commune</option>
-                      @foreach ($communes as $commune)
-                          <option value="{{$commune->id}}">{{$commune->libelleCommune}}</option>
-                      @endforeach
+
                    </select>
                   </div>
                 </div>
-  
+
                 <div class="col col-lg-3">
                   <div class="form-group">
                    <button id="btn_insert_lieu_mission" type="button" class="btn btn-info">Insérer le lieu   <i class="fa fa-map-marked-alt"></i></button>
                   </div>
                 </div>
-  
+
             </div>
-  
+
       <div class="row" style="margin-top: 5%; margin-right:24%; margin-left:5%" >
           <div class="col-lg-12 col-md-12 col-sm-12">
           <div style="height: 200px;overflow: scroll;">
@@ -228,15 +221,16 @@
           </div>
       </div>
   </fieldset>
-  
+
   <fieldset style="border: 2px solid #F37622; width:850px; margin-top : 30px; background:#E9F3E6">
       <legend>Membres de la mission</legend>
-  
+
       <div class="row" style="margin-top: 5%; margin-right:24%;margin-left:5%">
           <div class="col-lg-12 col-md-12 col-sm-12">
-             
+
             <div class="row">
               <div class="col-11">
+<<<<<<< HEAD
             <div  style="height: 400px;overflow: scroll">
               <table id="table_agent_mission_id" class="table table-striped">
                 <thead style="background-color: #019d4a;color:white;opacity: .8;">
@@ -255,6 +249,25 @@
 
               </table>
             </div>
+=======
+                <table id="" class="table table-striped">
+                  <thead style="background-color: #019d4a;color:white;opacity: .8;">
+                  <tr>
+                    <th>Matricule</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Structure</th>
+                    <th>Resp.</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+
+                  </tbody>
+
+                </table>
+>>>>>>> 06d5df190d0b08c06d98f7f661568cca4c56abab
               </div>
               <div class="col-1">
                 <button class="btn btn-info" type="button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#selection_mission_membre"><i class="fa fa-user-friends"></i></button>
@@ -281,7 +294,7 @@
           </div>
       </div>
   </fieldset>
-  
+
   <fieldset style="border: 2px solid #F37622; width:850px; margin-top:20px; background:#E9F3E6">
       <legend >Source de financement</legend>
       <div class="row" style='margin-left:10%'>
@@ -312,7 +325,7 @@
                </select>
               </div>
             </div>
-  
+
         </div>
   </fieldset>
         <div class="modal-footer" >
@@ -321,7 +334,7 @@
         </div>
     </form>
     </div>
-  </div>  
+  </div>
 </div>
 </div>
 
@@ -382,7 +395,7 @@
               </tr>
               </thead>
               <tbody id="membre_mission_table_body">
-                
+
               </tbody>
             </table>
           </div>

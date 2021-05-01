@@ -74,6 +74,7 @@ class MissioninterneController extends Controller
             ->where('structure_id','=',$request->codestructure)->get();
            $structuremission=$structures->find($request->codestructure);
 
+<<<<<<< HEAD
            $parinterim1=DB::table('signatures')->select('matricule','agents.nom','agents.prenom','agents.distinction','signatures.isinterim1','signatures.isparorodre1')
            ->join('agents','agents.matricule','=','signatures.nominterim1')
            ->where('structure_id','=',$request->codestructure)
@@ -86,6 +87,33 @@ class MissioninterneController extends Controller
 
             return ["signataire1"=>$signature1,"signataire2"=>$signature2,"structure"=>$structuremission,"parinterim1"=>$parinterim1,"parinterim2"=>$parinterim2];
         
+=======
+            return ["signataire1"=>$signature1,"signataire2"=>$signature2,"structure"=>$structuremission];
+
+    }
+
+// Filtre pour province
+    public function filterprovince(Request $request)
+    {
+
+        $province=DB::table('provinces')
+            ->select('provinces.libelleProvince','provinces.id')
+            ->where('provinces.region_id','=',$request->region_id)->get();
+        return ["province"=>$province];
+
+    }
+
+    //Filtre pour commune
+
+    public function filtercommune(Request $request)
+    {
+
+        $commune=DB::table('communes')
+            ->select('communes.libelleCommune','communes.id')
+            ->where('communes.province_id','=',$request->province_id)->get();
+        return ["commune"=>$commune];
+
+>>>>>>> 06d5df190d0b08c06d98f7f661568cca4c56abab
     }
 
     public function filtrestructuremission(Request $request)
