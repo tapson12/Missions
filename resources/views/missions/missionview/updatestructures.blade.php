@@ -14,7 +14,14 @@
         </button>
       </div>
       <div class="modal-body">
-
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="isinterne">Structure externe ?</label>
+              <input type="checkbox" name="isinterne" id="isinterne">
+            </div>
+          </div>
+        </div>
         <div class="row">
             <div class="col-lg-6">
               <div class="form-group">
@@ -23,21 +30,11 @@
                 <small id="helpId" class="text-muted" ><span style="color: red">le sigle de la structure est obligatoire</span></small>
               </div>
             </div>
-
-        <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
               <label for="">Structure</label>
               <input  type="text" value="{{$updatestructure->libellestructure}}"   name="libellestructure" id="" class="form-control" placeholder="Le libelle de la structure" aria-describedby="helpId">
               <small id="helpId" class="text-muted" ><span style="color: red">le libelle de la structure ne doit pas être vide</span></small>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="form-group">
-              <label for="">Profil</label>
-              <input type="text" value="{{$updatestructure->profil}}"    name="profil" id="" class="form-control" placeholder="Le profil de la structure" aria-describedby="helpId" required>
-              <small id="helpId" class="text-muted" ><span style="color: red">le profil de la structure ne doit pas être vide</span></small>
             </div>
           </div>
         </div>
@@ -77,6 +74,21 @@
                <option value="{{$agent->nom}} {{$agent->prenom}}">{{$agent->matricule}} {{$agent->nom}} {{$agent->prenom}}</option>
                @endforeach
               </select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="">Profil</label>
+              <input type="text" value="{{$updatestructure->profil}}"    name="profil" id="" class="form-control" placeholder="Le profil de la structure" aria-describedby="helpId" required>
+              <small id="helpId" class="text-muted" ><span style="color: red">le profil de la structure ne doit pas être vide</span></small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="isprojet">Projet ?</label>
+              <input type="checkbox" name="isprojet" id="isprojet">
             </div>
           </div>
         </div>

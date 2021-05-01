@@ -5,6 +5,8 @@ $(document).ready(function() {
     $("#signataire_2").select2();
     var token=$('#token').val();
 
+    
+
     $("#signataire_2").on('change',function() {
         
         var codeagent1=this.value;
@@ -75,15 +77,29 @@ $(document).ready(function() {
         
        
        
-        if(data!=undefined && data.length >0)
+        if(data[0].length==0)
         {
+            console.log(data);
+        }else
+        {
+            console.log(data);
             
-            
+            $("#id").val(data[0][0].signataire_id);
             $("#signataire_1").append("<option selected value='"+data[0][0].matricule+"'>"+data[0][0].nom+' '+data[0][0].prenom+"</option>")
-            $("#distinction_1").val(data[0][0].distinction);
-
-           $("#signataire_2").append("<option selected value='"+data[1][0].matricule+"'>"+data[1][0].nom+' '+data[1][0].prenom+"</option>")
+            $("#signataire_2").append("<option selected value='"+data[1][0].matricule+"'>"+data[1][0].nom+' '+data[1][0].prenom+"</option>")
             $("#distinction_2").val(data[1][0].distinction) 
+            $("#distinction_1").val(data[0][0].distinction);
+            $("#parinterim1").prop('checked', data[2][0].isinterim1);
+            $("#parordre1").prop('checked', data[2][0].isparorodre1);
+            $("#nominterim1").append("<option selected value='"+data[2][0].matricule+"'>"+data[2][0].nom+" "+data[2][0].prenom+"</option>")
+            
+            $("#parinterim2").prop('checked', data[3][0].isinterim2);
+            $("#parordre2").prop('checked', data[3][0].isparorodre2);
+            $("#nominterim2").append("<option selected value='"+data[3][0].matricule+"'>"+data[2][0].nom+" "+data[2][0].prenom+"</option>")
+            
+
+            
+          
         }
           
     });

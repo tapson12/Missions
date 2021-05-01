@@ -28,6 +28,14 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="isinterne">Structure externe ?</label>
+              <input type="checkbox" name="isinterne" id="isinterne">
+            </div>
+          </div>
+        </div>
+        <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
                   <label for="">Sigle</label>

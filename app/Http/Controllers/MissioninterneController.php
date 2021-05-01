@@ -22,15 +22,21 @@ class MissioninterneController extends Controller
     public function index()
     {
 
-        $structures=Structure::all();
+        $structures=DB::table('structures')
+        ->select('id','code')
+        ->where('isstructureinterne','=',false)->get();
+        
         $vehicules=Vehicule::all();
         $regions=Region::all();
         $provinces=Province::all();
         $communes=Commune::all();
         $types=TypeAgent::all();
+        $sourceinternes=DB::table('structures')
+        ->select('code','type')
+        ->where('type','=',false)->get();
         $sourcefincancements=SourceFinancement::all();
 
-        return view ('missions\missionview\missioninterne',compact(['structures','vehicules','regions','provinces','communes','sourcefincancements','types']));
+        return view ('missions\missionview\missioninterne',compact(['structures','vehicules','regions','provinces','communes','sourcefincancements','types','sourceinternes']));
     }
 
     /**
@@ -68,8 +74,27 @@ class MissioninterneController extends Controller
             ->where('structure_id','=',$request->codestructure)->get();
            $structuremission=$structures->find($request->codestructure);
 
-            return ["signataire1"=>$signature1,"signataire2"=>$signature2,"structure"=>$structuremission];
+           $parinterim1=DB::table('signatures')->select('matricule','agents.nom','agents.prenom','agents.distinction','signatures.isinterim1','signatures.isparorodre1')
+           ->join('agents','agents.matricule','=','signatures.nominterim1')
+           ->where('structure_id','=',$request->codestructure)
+           ->get();
+
+           $parinterim2=DB::table('signatures')->select('matricule','agents.nom','agents.prenom','agents.distinction','signatures.isinterim2','signatures.isparorodre2')
+           ->join('agents','agents.matricule','=','signatures.nominterim2')
+           ->where('structure_id','=',$request->codestructure)
+           ->get();
+
+            return ["signataire1"=>$signature1,"signataire2"=>$signature2,"structure"=>$structuremission,"parinterim1"=>$parinterim1,"parinterim2"=>$parinterim2];
         
+    }
+
+    public function filtrestructuremission(Request $request)
+    {
+        $structure=DB::table('structures')
+            ->select('id','code')
+            ->where('isstructureinterne','!=',$request->type_structure)->get();
+
+            return $structure;
     }
 
     public function filteragent(Request $request)

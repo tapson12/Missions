@@ -31,23 +31,23 @@ $(document).ready(function() {
             success:function(data) {
                 $("#dt_id").empty();
 
-                
+                console.log(data);
                 data.structure.child.forEach(element => {
                     $("#dt_id").append("<option>selectionner une direction technique</option><option value='"+element.id+"'>"+element.code+"</option>")
                 }); 
 
           
-                    /* $("#display_signataire1").remove();
+                  /*    $("#display_signataire1").remove();
                     $("#display_signataire2").remove();
                     $("#display_distinction1").remove();
-                    $("#display_distinction2").remove();  */
+                    $("#display_distinction2").remove();  */ 
 
                 
-                if(data.signataire1.length==0 || data.signataire2.length==0)
+                if(data.signataire1[0].length==0 || data.signataire2.length==0)
                 {
                     
 
-                    $("#display_signataire1").append("<strong style='color:red;font-size:0.6cm;' id='msg_sigantaire_1'>Veuillez paramètré le signataire</strong>");
+                    $("#display_signataire1").text("<strong style='color:red;font-size:0.6cm;' id='msg_sigantaire_1'>Veuillez paramètré le signataire</strong>");
                     $("#display_signataire2").append("<strong style='color:red;font-size:0.6cm;' id='msg_sigantaire_2'>Veuillez paramètré le signataire</strong>");
 
                 
@@ -59,7 +59,26 @@ $(document).ready(function() {
                     $("#display_signataire2").append("<strong style='font-size=0.6cm;'>"+data.signataire2[0].nom+" "+data.signataire2[0].prenom+"</strong>");
                     $("#display_distinction1").append("<strong style='font-size=0.6cm;'>"+data.signataire1[0].distinction+"</strong>");
                     $("#display_distinction2").append("<span>"+data.signataire2[0].distinction+"</span>");
-                
+
+                    if(data.parinterim1.length!=0)
+                    {
+                        $("#mission_parinterim1").prop('checked',data.parinterim1[0].isinterim1);
+                        $("#mission_parordre1").prop('checked',data.parinterim1[0].isparorodre1);
+                        $("#nominterim_mission1").text(data.parinterim1[0].nom+" "+data.parinterim1[0].prenom);
+    
+                    }
+
+                   
+                    if(data.parinterim2.length!=0)
+                    {
+                        $("#mission_parinterim2").prop('checked',data.parinterim2[0].isinterim2);
+                        $("#mission_parordre2").prop('checked',data.parinterim2[0].isparorodre2);
+                        $("#nominterim_mission2").text(data.parinterim2[0].nom+" "+data.parinterim2[0].prenom);
+    
+                    }
+                   
+
+                    
                 }
 
                
@@ -75,3 +94,22 @@ $(document).ready(function() {
     });
 
 });
+
+
+function savemission(){
+   var structure_id=$("#mission_structure_id").val();
+    var objetmission=$("#objetmission").val();
+    var datedepart=$("#datedebut").val();
+    var datefin=$("#datefin").val();
+    var vehiculemission=$("#immat_id").val();
+    var chefmission=$("#chef_mission").val();
+    var chauffeurmission=$("#conducteur_mission").val();
+    var hebergement=$("#hebergement_id").val();
+    var transport=$("#transport_id").val();
+    var lieux_mission=[];
+
+    $("#table_lieu_mission").closest('tr');
+   
+    console.log(document.getElementById("table_lieu_mission").rows[1].cells[0].innerHTML);
+   
+}

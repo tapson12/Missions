@@ -24,6 +24,8 @@ class CreateStructuresTable extends Migration
            $table->bigIncrements('id');
            $table->string('code');
            $table->bigInteger('type_structure_id');
+           $table->boolean('isstructureinterne')->nullable()->default(false);
+           $table->boolean('isprojet')->nullable()->default(false);
            $table->bigInteger('structure_id')->nullable();
            $table->string('libellestructure', 255);
            $table->string('responsable');

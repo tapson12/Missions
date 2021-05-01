@@ -6,5 +6,7 @@ $(document).ready(function () {
   $("#hebergement_id").select2();
 
   $("#transport_id").select2();
+  $("#nominterim1").select2();
+  $("#nominterim2").select2();
   
 });
