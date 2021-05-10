@@ -152,8 +152,8 @@
           <div class="row" style="margin-top: 20px; margin-left:5%">
               <div class="col col-lg-3">
                   <div class="form-group">
-                   <select name="mission_region_id" id="mission_region_id" class="form-control">
-                      <option value="">Choisissez la région</option>
+                   <select name="mission_region_id" id="mission_region_id" required="required" class="form-control">
+                      <option value=""></option>
                       @foreach ($regions as $region)
                           <option value="{{$region->id}}">{{$region->libelleregion}}</option>
                       @endforeach

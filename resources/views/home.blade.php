@@ -25,6 +25,8 @@
                 </div>
             </div>
             <div class="row" style="margin-top: 5%;">
+
+                @role('administrateur')
                 <div class="col-6">
 
                     <a  href="{{url('/parametrage')}}">
@@ -33,10 +35,21 @@
 
 
                 </div>
+
+                @endrole
             </div>
             <div class="row" style="margin-top: 15%;">
                 <div class="col-6">
-                    <a href="#"><i class="fa fa-power-off fa-3x" style="color: red"></i></a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+            <i class="fa fa-power-off fa-3x" style="color: red"></i>
+         </a>
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+             @csrf
+         </form>
+
                 </div>
             </div>
         </div>

@@ -83,7 +83,7 @@
            <i class="fa fa-users fa-2x icon_color"></i>Utilisateurs
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{url('/domaine-installation')}}">Utilisateurs</a>
+            <a class="dropdown-item" href="{{url('/users')}}">Utilisateurs</a>
             <a class="dropdown-item" href="{{url('/kits')}}">Droits</a>
             <div class="dropdown-divider"></div>
           </div>

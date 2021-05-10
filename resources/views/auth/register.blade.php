@@ -1,14 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.parametragetemplate')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container" style="align:center">
+    <div class="row justify-content-center" >
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="card" style="align:center;margin-top: 5%">
+                <div class="card-header">Ajout Utilisateur</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form action="{{url('/register-user')}}" method="POST">
                         @csrf
 
                         <div class="form-group row">
@@ -59,6 +59,14 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+                        </div>
+                        <div class="form-group">
+                          <label for=""></label>
+                            <select name='role' class='form-control' multiple>
+                            @foreach ($roles as $role)
+                                <option value='{{$role->id}}'>{{$role->name}}</option>
+                            @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group row mb-0">
