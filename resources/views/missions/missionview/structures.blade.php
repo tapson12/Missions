@@ -39,7 +39,7 @@
                 <tbody>
                   @foreach ($structures as $structure)
 
-                  @if (sizeof($structure->child))
+                 {{--  @if (sizeof($structure->child))   --}}
 
                     <tr>
                       <td>{{$structure->code}}</td>
@@ -89,7 +89,7 @@
 
                           </td>
                       </tr>
-                  @endif
+                  {{--  @endif  --}}
 
 
                   @endforeach

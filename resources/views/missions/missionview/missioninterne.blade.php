@@ -4,13 +4,62 @@
 
 
 
-<div class="row" style="margin-top: 5%;margin-left: -30%; margin-right: +10%">
+<div class="row" style="margin-top: 5%;margin-left: -45%; margin-right: +10%">
   <div class="card-body">
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
+     <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="ion ion-clipboard mr-1"></i>
+         Liste des ordre de mission
+        </h3>
 
+    
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <ul class="todo-list" data-widget="todo-list">
+          @foreach ($ordremission as $ordre)
+          <li>
+          
+            <!-- checkbox -->
+            <div  class="icheck-primary d-inline ml-2">
+              <input type="checkbox" value="" name="todo1" id="todoCheck1">
+              <label for="todoCheck1"></label>
+            </div>
+            <!-- todo text -->
+            <a href="{{url('/display-reporting-mission/'.$ordre->id)}}"><span class="text">{{$ordre->objet}} {{$ordre->structure->code}}</span></a>
+            <!-- Emphasis label -->
+            <div class="tools">
+              <i class="fas fa-edit"></i>
+              <i class="fas fa-trash-o"></i>
+            </div>
+          </li>
+          @endforeach
+          
+        </ul>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer clearfix">
+        <div class="card-tools">
+         {{$ordremission->onEachSide(5)->links()}}
+        </div>
+      </div>
     </div>
-    <div class="col-10">
+    </div>
+    <div class="col-9">
+
+      <div class="row">
+        <div class="col-12">
+          <div id="savemissionmessage" class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+            ordre de mission generé avec succès 
+          </div>
+        </div>
+      </div>
+
       <form action="" method="POST">
         <input type="text" value="{{csrf_token()}}" name="_token" id="token" hidden="true">
       <div class="modal-content">
@@ -49,7 +98,7 @@
           <div class="row" style="margin-left: 5%">
               <div class="col-sm-11">
                 <div class="form-group">
-                  <textarea placeholder="Saisissez l'objet de votre mission" id="objet" name="objet" rows="2" cols="80"></textarea>
+                  <textarea placeholder="Saisissez l'objet de votre mission" id="objetmission" name="objetmission" rows="2" cols="80"></textarea>
                   </div>
               </div>
             </div>
@@ -57,7 +106,7 @@
             <div class="row" style="margin-left: 5%">
               <div class="col col-lg-3">
                 <div class="form-group">
-                  <input id="datedebut" type="date" value="datedebut" class="form-control">
+                  <input id="datedebut" type="date"  value="datedebut" class="form-control">
                 </div>
               </div>
               <div class="col col-lg-3">
@@ -99,14 +148,14 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="interim">Interim</label>
-                        <input type="checkbox" value="interim">
+                        <input id="mission_parinterim1" disabled type="checkbox" value="interim">
                       </div>
 
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="interim">Par ordre</label>
-                        <input type="checkbox" value="parordre">
+                        <label  for="interim">Par ordre</label>
+                        <input id="mission_parordre1" disabled type="checkbox" value="parordre">
                       </div>
                     </div>
                   </div>
@@ -130,16 +179,32 @@
                   <div class="col-6">
                     <div class="form-group">
                       <label for="interim">Interim</label>
-                      <input type="checkbox" value="interim">
+                      <input disabled id="mission_parinterim2" type="checkbox" value="interim">
                     </div>
 
                   </div>
                   <div class="col-6">
                     <div class="form-group">
                       <label for="interim">Par ordre</label>
-                      <input type="checkbox" value="parordre">
+                      <input  id="mission_parordre" disabled type="checkbox" value="parordre">
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="nominterim_mission1">Nom interim 1:</label>
+                  <input  type="text" id="nominterim_val_mission1" value="">
+                <strong id="nominterim_mission1"></strong>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="nominterim_mission2">Nom interim 2:</label>
+                  <input  type="text" id="nominterim_val_mission2" value="">
+                <strong id="nominterim_mission2"></strong>
                 </div>
               </div>
             </div>
@@ -216,26 +281,46 @@
 
             <div class="row">
               <div class="col-11">
-                <table id="" class="table table-striped">
-                  <thead style="background-color: #019d4a;color:white;opacity: .8;">
-                  <tr>
-                    <th>Matricule</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Structure</th>
-                    <th>Resp.</th>
-                    <th>Actions</th>
-                  </tr>
-                  </thead>
-                  <tbody>
+            <div  style="height: 400px;overflow: scroll">
+              <table id="table_agent_mission_id" class="table table-striped">
+                <thead style="background-color: #019d4a;color:white;opacity: .8;">
+                <tr>
+                  <th>Matricule</th>
+                  <th>Nom Prenom</th>
+                  <th>Structure</th>
+                  <th>Resp.</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="agent_id_mission">
 
 
-                  </tbody>
+                </tbody>
 
-                </table>
+              </table>
+            </div>
+              
               </div>
               <div class="col-1">
                 <button class="btn btn-info" type="button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#selection_mission_membre"><i class="fa fa-user-friends"></i></button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="chef_mission">Chef de mission</label>
+                 <select class="form-control" name="chef_mission" id="chef_mission">
+                  <option value="">Selectionner le chef de mission</option>
+                 </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="conducteur_mission">Chauffeur mission</label>
+                 <select class="form-control" name="conducteur_mission" id="conducteur_mission">
+                  <option value="">Selectionner le chef de mission</option>
+                 </select>
+                </div>
               </div>
             </div>
           </div>
@@ -247,10 +332,16 @@
       <div class="row" style='margin-left:10%'>
           <div class="col col-lg-5">
               <div class="form-group">
-               <select name="" id="hebergement_id" class="form-control">
-                  <option value="">hébergement et restauration</option>
+                <select name="" id="hebergement_id" class="form-control">
+                  <option value="">Hebergement</option>
+                  @foreach ($sourceinternes as $sourceinterne)
+                      <option value="{{$sourceinterne->id.',interne'.$sourceinterne->type}}">{{$sourceinterne->code}} </option>
+                  @endforeach
                   @foreach ($sourcefincancements as $source)
-                      <option value="{{$source->id}}">{{$source->libellesourcefinancement}}</option>
+                  <option value="{{$source->id.',externe'}}">{{$source->libellesourcefinancement}}</option>
+                  @endforeach
+                  @foreach ($sourceprojets as $sourceprojet)
+                  <option value="{{$sourceprojet->id.',projet'}}">{{$sourceprojet->code}}</option>
                   @endforeach
                </select>
               </div>
@@ -259,8 +350,14 @@
               <div class="form-group">
                <select name="" id="transport_id" class="form-control">
                   <option value="">Transport/carburant</option>
+                  @foreach ($sourceinternes as $sourceinterne)
+                      <option value="{{$sourceinterne->id.',interne'.$sourceinterne->type}}">{{$sourceinterne->code}} </option>
+                  @endforeach
                   @foreach ($sourcefincancements as $source)
-                  <option value="{{$source->id}}">{{$source->libellesourcefinancement}}</option>
+                  <option value="{{$source->id.',externe'}}">{{$source->libellesourcefinancement}}</option>
+                  @endforeach
+                  @foreach ($sourceprojets as $sourceprojet)
+                  <option value="{{$sourceprojet->id.',projet'}}">{{$sourceprojet->code}}</option>
                   @endforeach
                </select>
               </div>
@@ -270,7 +367,7 @@
   </fieldset>
         <div class="modal-footer" >
           <a href="" class="btn btn-warning" data-dismiss="modal">Quitter <i class="fa fa-arrows" aria-hidden="true"></i></a>
-          <button type="submit" class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></button>
+          <button type="button" onclick="savemission()" class="btn btn-success">Sauvegarder <i class="fa fa-save" aria-hidden="true"></i></button>
         </div>
     </form>
     </div>
@@ -297,6 +394,26 @@
             </div>
           </div>
         </div>
+        <div class="row" id="date_no_select">
+          <div class="col-12">
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+             <div >
+               veuillez selectionner une date 
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="doublon_alert">
+          <div class="col-12">
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+             <div id='erreur_id'></div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-12">
             <div class="form-group">
@@ -317,7 +434,12 @@
             </div>
           </div>
         </div>
-        <div class="row" style="height: 500px;overflow: scroll;">
+        <div class="row">
+          <div class="col-2">
+            <button id="insert_agent_to_mission" class="btn btn-warning"><i class="fa fa-plus fa-3x"></i></button>
+          </div>
+        </div>
+        <div class="row" style="height: 500px;overflow: scroll;margin-top: 2%;">
           <div class="col-12">
             <table id="membre_mission_table" class="table table-bordered table-striped">
               <thead style="background-color: #019d4a;color:white;opacity: .8;">
@@ -326,6 +448,7 @@
                 <th>Nom et prenom</th>
                 <th>Matricule </th>
                 <th>Structure</th>
+                <th>resp.</th>
               </tr>
               </thead>
               <tbody id="membre_mission_table_body">
@@ -337,7 +460,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Enregistrer <i class="fa fa-save"></i></button>
       </div>
     </div>
   </div>

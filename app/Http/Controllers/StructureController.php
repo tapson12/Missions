@@ -44,6 +44,7 @@ class StructureController extends Controller
             $structure->responsable=$request->responsable;
             $structure->created_by=$email;
             $structure->type=$request->isproject;
+            $structure->isstructureinterne=$request->isinterne;
             $structure->update_by=$email;
             $structure->typestructure()->associate($request->type_structure_id);
             $structure->structure()->associate($request->structure_id);
@@ -78,18 +79,32 @@ class StructureController extends Controller
    {
     if (Auth::check()) {
 
-        $email = Auth::user()->email;
-        $structure= Structure::find($id);
-        $structure->libellestructure=$request->libellestructure;
-        $structure->profil=$request->profil;
-        $structure->responsable=$request->responsable;
-        $structure->created_by=$email;
-        $structure->update_by=$email;
-        $structure->typestructure()->associate($request->type_structure_id);
-        $structure->structure()->associate($request->structure_id);
-
-        $structure->save();
-        return redirect('/structures');
+            $email = Auth::user()->email;
+            $structure= Structure::find($id);
+            $structure->code=$request->code;
+            $structure->libellestructure=$request->libellestructure;
+            $structure->profil=$request->profil;
+            $structure->responsable=$request->responsable;
+            
+            if($request->isprojet==true)
+            {
+                $structure->type=true;
+            }else
+            {
+                $structure->type=false;
+            }
+            if($request->isinterne==true)
+            {
+                $structure->isstructureinterne=true;
+            }else
+            {
+                $structure->isstructureinterne=false;
+            }
+            $structure->update_by=$email;
+            $structure->typestructure()->associate($request->type_structure_id);
+            $structure->structure()->associate($request->structure_id);
+            $structure->save();
+            return redirect('/structures');
     }
     else
     {

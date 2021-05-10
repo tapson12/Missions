@@ -137,5 +137,24 @@ Route::middleware('auth')->group(function () {
 
 
 
+<<<<<<< HEAD
+=======
+Route::post('/filter-structure',[App\Http\Controllers\MissioninterneController::class, 'filterstructure']);
+Route::post('/filter-province',[App\Http\Controllers\MissioninterneController::class, 'filterprovince']);
+Route::post('/filter-commune',[App\Http\Controllers\MissioninterneController::class, 'filtercommune']);
+Route::get('/filter-agent-mission',[App\Http\Controllers\MissioninterneController::class, 'filteragent']);
+Route::get('/filter-strucutre-mission',[App\Http\Controllers\MissioninterneController::class, 'filtrestructuremission']);
+Route::post('/save-mission',[App\Http\Controllers\MissioninterneController::class, 'store']);
+Route::get('/display-reporting-mission/{id}',[App\Http\Controllers\MissioninterneController::class, 'displayordremission']);
+
+Route::get('/verified-doublons/',[App\Http\Controllers\MissioninterneController::class, 'verifiedoublon']);
+
+Route::get('/diplay-annexe/',[App\Http\Controllers\MissioninterneController::class, 'annexe']);
+
+
+
+
+
+>>>>>>> 475e0f53a1a09cbfe4009f7cad814565944e14b0
 
 

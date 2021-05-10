@@ -53,6 +53,12 @@ class Structure extends Model
         return $this->belongsTo(Structure::class, 'structure_id');
     }
 
+    
+    public function missioninterne()
+    {
+        return $this->hasMany(MissionInterne::class);
+    }
+    
 
 
     public function parent()
@@ -66,12 +72,12 @@ class Structure extends Model
     public function child()
     {
         // recursively return all children
-        return $this->HasMany(Structure::class, 'structure_id')->with('child');
+        return $this->HasMany(Structure::class, 'id','structure_id')->with('child');
     }
 
     public function allStructures()
     {
-        return $this->child()->with('structures');
+        return $this->child()->with('allStructures');
     } 
 
     

@@ -59,4 +59,10 @@ class Agent extends Model
     {
         return $this->belongsToMany(MissionInterne::class,'mission_interne_id', 'agent_id');
     }
+    
+    public function affectation()
+    {
+        return $this->hasMany(Affectation::class);
+    }
+    
 }

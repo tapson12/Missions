@@ -6,6 +6,7 @@
   <div class="card-body">
     <form action="{{url('/save-signature')}}" method="POST">
       <input type="text" value="{{csrf_token()}}" name="_token" id="token" hidden="true">
+      <input type="text" name="id" id="id" hidden>
     <div class="modal-content">
       <div class="modal-header modal-header-designed">
         <h5 class="modal-title" id="exampleModalLabel">Paramètrage signataire</h5>
@@ -41,7 +42,7 @@
           </div>
           <div class="col-6">
             <div class="form-group">
-              <label for="">Signataire 1</label>
+              <label for="">Signataire 2</label>
               <select name="signataire_2" id="signataire_2"  class="form-control">
                 <option value=""></option>
                 @foreach ($agents as $agent)
@@ -65,6 +66,73 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="parinterim1">Par interim</label>
+                  <input type="checkbox" name="parinterim1" id="parinterim1">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="parordre1">Par ordre</label>
+                  <input type="checkbox" name="parordre1" id="parordre1">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="parinterim2">Par interim</label>
+                  <input type="checkbox" name="parinterim2" id="parinterim2">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="parordre1">Par ordre</label>
+                  <input type="checkbox" name="parordre2" id="parordre2">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="nominterim1">Nom interim</label>
+                  <select class="form-control" name="nominterim1" id="nominterim1">
+                    <option value=""></option>
+                    @foreach ($agents as $agent)
+                      <option value="{{$agent->matricule}}">{{$agent->nom}} {{$agent->prenom}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="nominterim2">Nom interim</label>
+                  <select class="form-control" name="nominterim2" id="nominterim2">
+                    <option value=","></option>
+                    @foreach ($agents as $agent)
+                      <option value="{{$agent->matricule}}">{{$agent->nom}} {{$agent->prenom}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+           
         <div class="row">
           <div class="col-6">
             <div class="form-group">
