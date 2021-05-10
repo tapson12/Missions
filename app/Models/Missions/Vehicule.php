@@ -30,4 +30,7 @@ class Vehicule extends Model
     {
         return $this->hasMany(MissionInterne::class);
     }
+
+   
+
 }

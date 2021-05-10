@@ -18,7 +18,7 @@ class MissionInterne extends Model
      */
     public function agent()
     {
-        return $this->belongsToMany(Agent::class, 'agents', 'mission_interne_id', 'agent_id');
+        return $this->belongsToMany(Agent::class, 'agent_mission_internes', 'mission_interne_id', 'agent_id');
     }
 
     /**
@@ -28,7 +28,7 @@ class MissionInterne extends Model
      */
     public function lieumission()
     {
-        return $this->belongsToMany(LieuMission::class, 'lieu_mission_internes', 'agent_id', 'lieumission_id');
+        return $this->belongsToMany(LieuMission::class, 'lieu_mission_internes', 'mission_interne_id','lieu_mission_id');
     }
 
     /**
@@ -39,6 +39,12 @@ class MissionInterne extends Model
     public function vehicule()
     {
         return $this->belongsTo(Vehicule::class, 'vehicule_id');
+    }
+
+    
+    public function structure()
+    {
+        return $this->belongsTo(Structure::class, 'structure_id');
     }
 
     public function paramsoussigne(){

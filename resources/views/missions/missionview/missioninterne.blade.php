@@ -4,13 +4,62 @@
 
 
 
-<div class="row" style="margin-top: 5%;margin-left: -30%; margin-right: +10%">
+<div class="row" style="margin-top: 5%;margin-left: -45%; margin-right: +10%">
   <div class="card-body">
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
+     <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="ion ion-clipboard mr-1"></i>
+         Liste des ordre de mission
+        </h3>
 
+    
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <ul class="todo-list" data-widget="todo-list">
+          @foreach ($ordremission as $ordre)
+          <li>
+          
+            <!-- checkbox -->
+            <div  class="icheck-primary d-inline ml-2">
+              <input type="checkbox" value="" name="todo1" id="todoCheck1">
+              <label for="todoCheck1"></label>
+            </div>
+            <!-- todo text -->
+            <a href="{{url('/display-reporting-mission/'.$ordre->id)}}"><span class="text">{{$ordre->objet}} {{$ordre->structure->code}}</span></a>
+            <!-- Emphasis label -->
+            <div class="tools">
+              <i class="fas fa-edit"></i>
+              <i class="fas fa-trash-o"></i>
+            </div>
+          </li>
+          @endforeach
+          
+        </ul>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer clearfix">
+        <div class="card-tools">
+         {{$ordremission->onEachSide(5)->links()}}
+        </div>
+      </div>
     </div>
-    <div class="col-10">
+    </div>
+    <div class="col-9">
+
+      <div class="row">
+        <div class="col-12">
+          <div id="savemissionmessage" class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+            ordre de mission generé avec succès 
+          </div>
+        </div>
+      </div>
+
       <form action="" method="POST">
         <input type="text" value="{{csrf_token()}}" name="_token" id="token" hidden="true">
       <div class="modal-content">
@@ -147,12 +196,14 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="nominterim_mission1">Nom interim 1:</label>
+                  <input  type="text" id="nominterim_val_mission1" value="">
                 <strong id="nominterim_mission1"></strong>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="nominterim_mission2">Nom interim 2:</label>
+                  <input  type="text" id="nominterim_val_mission2" value="">
                 <strong id="nominterim_mission2"></strong>
                 </div>
               </div>
@@ -281,13 +332,16 @@
       <div class="row" style='margin-left:10%'>
           <div class="col col-lg-5">
               <div class="form-group">
-               <select name="" id="hebergement_id" class="form-control">
-                  <option value="">hébergement et restauration</option>
+                <select name="" id="hebergement_id" class="form-control">
+                  <option value="">Hebergement</option>
                   @foreach ($sourceinternes as $sourceinterne)
-                      <option value="{{$sourceinterne->type}}">{{$sourceinterne->code}}</option>
+                      <option value="{{$sourceinterne->id.',interne'.$sourceinterne->type}}">{{$sourceinterne->code}} </option>
                   @endforeach
                   @foreach ($sourcefincancements as $source)
-                      <option value="{{$source->id}}">{{$source->libellesourcefinancement}}</option>
+                  <option value="{{$source->id.',externe'}}">{{$source->libellesourcefinancement}}</option>
+                  @endforeach
+                  @foreach ($sourceprojets as $sourceprojet)
+                  <option value="{{$sourceprojet->id.',projet'}}">{{$sourceprojet->code}}</option>
                   @endforeach
                </select>
               </div>
@@ -297,12 +351,14 @@
                <select name="" id="transport_id" class="form-control">
                   <option value="">Transport/carburant</option>
                   @foreach ($sourceinternes as $sourceinterne)
-                      <option value="{{$sourceinterne->type}}">{{$sourceinterne->code}}</option>
+                      <option value="{{$sourceinterne->id.',interne'.$sourceinterne->type}}">{{$sourceinterne->code}} </option>
                   @endforeach
                   @foreach ($sourcefincancements as $source)
-                  <option value="{{$source->id}}">{{$source->libellesourcefinancement}}</option>
+                  <option value="{{$source->id.',externe'}}">{{$source->libellesourcefinancement}}</option>
                   @endforeach
-                  
+                  @foreach ($sourceprojets as $sourceprojet)
+                  <option value="{{$sourceprojet->id.',projet'}}">{{$sourceprojet->code}}</option>
+                  @endforeach
                </select>
               </div>
             </div>
@@ -335,6 +391,26 @@
             <div class="form-group">
               <label for="type_structure">Agent interne</label>
               <input type="checkbox" checked id="check_type_structure" value="">
+            </div>
+          </div>
+        </div>
+        <div class="row" id="date_no_select">
+          <div class="col-12">
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+             <div >
+               veuillez selectionner une date 
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="doublon_alert">
+          <div class="col-12">
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+             <div id='erreur_id'></div>
             </div>
           </div>
         </div>
@@ -384,7 +460,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="button"  class="btn btn-primary">Enregistrer <i class="fa fa-save"></i></button>
       </div>
     </div>
   </div>

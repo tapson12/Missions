@@ -1,5 +1,7 @@
 $(document).ready(function() {
     
+   $("#doublon_alert").hide();
+    $("#date_no_select").hide();
     $("#check_type_structure").on('change',function() {
         var type_structure=$("#check_type_structure").is(":checked");
 
@@ -51,16 +53,64 @@ $(document).ready(function() {
         var grid = document.getElementById("membre_mission_table");
  
         var checkBoxes = grid.getElementsByTagName("INPUT");
-
+        var isdoublon=false;
         for (var i = 0; i < checkBoxes.length; i++) {
             if (checkBoxes[i].checked) {
                 var row = checkBoxes[i].parentNode.parentNode;
+                var matricule=row.cells[2].innerHTML;
+                var startdate=$("#datedebut").val();
+                var enddate=$("#datefin").val();
+               
+                $("#erreur_id").empty();
+                $.ajax({
+                    url : '/verified-doublons',
+                    type : 'GET',
+                   data:{
+                       matricule:matricule,
+                       startdate:startdate,
+                       enddate:enddate
+                   },
+                    success : function(data){ // success est toujours en place, bien sûr !
+                        
+                        console.log(data);
+                       if(startdate!='' && enddate!='')
+                       {
+                        if(data==0)
+                        {
+                            $("#conducteur_mission").append("<option value='"+row.cells[2].innerHTML+"'>"+row.cells[1].innerHTML+"</option>");
+                            $("#chef_mission").append("<option value='"+row.cells[2].innerHTML+"'>"+row.cells[1].innerHTML+"</option>");
+                            
+                            $("#agent_id_mission").append("<tr><td>"+row.cells[2].innerHTML+"</td><td>"+row.cells[1].innerHTML+"</td><td>"+row.cells[3].innerHTML+"</td><td>"+row.cells[4].innerHTML+"</td><td><button class='btn btn-danger'><i class='fa fa-trash'></i></button></td></tr>");
+
+                           
+
+                        }else{
+                           
+                            $('#erreur_id').append("l'agent : "+row.cells[1].innerHTML+' est deja en mission<br>');
+                            isdoublon=true;
+                           
+                        }
+                       }else
+                       {
+                        $("#date_no_select").show();
+                       }
+                       
+                    },
+             
+                    error : function(resultat, statut, erreur){
+             
+                    }
+             
+                 });
+
+
                 
-                $("#conducteur_mission").append("<option value='"+row.cells[1].innerHTML+"'>"+row.cells[1].innerHTML+"</option>");
-                $("#chef_mission").append("<option value='"+row.cells[1].innerHTML+"'>"+row.cells[1].innerHTML+"</option>");
-                
-                $("#agent_id_mission").append("<tr><td>"+row.cells[2].innerHTML+"</td><td>"+row.cells[1].innerHTML+"</td><td>"+row.cells[3].innerHTML+"</td><td>"+row.cells[4].innerHTML+"</td><td><button class='btn btn-danger'><i class='fa fa-trash'></i></button></td></tr>");
             }
+        }
+
+        if(!isdoublon)
+        {
+            $("#doublon_alert").show();
         }
     });
 });

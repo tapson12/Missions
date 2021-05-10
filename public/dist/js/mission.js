@@ -1,9 +1,10 @@
 $(document).ready(function() {
+    $("#savemissionmessage").hide();
     $("#mission_structure_id").select2();
     $("#immat_id").select2();
-
-   
-
+    
+    $("#nominterim_val_mission1").hide();
+    $("#nominterim_val_mission2").hide();
     $("#btn_insert_lieu_mission").on('click',function() {
         var region=$("#mission_region_id option:selected").text();
         var province=$("#mission_province_id option:selected").text();
@@ -67,7 +68,7 @@ $(document).ready(function() {
                         $("#mission_parinterim1").prop('checked',data.parinterim1[0].isinterim1);
                         $("#mission_parordre1").prop('checked',data.parinterim1[0].isparorodre1);
                         $("#nominterim_mission1").text(data.parinterim1[0].nom+" "+data.parinterim1[0].prenom);
-    
+                        $("#nominterim_val_mission1").val(data.parinterim1[0].matricule);
                     }
 
                    
@@ -76,7 +77,7 @@ $(document).ready(function() {
                         $("#mission_parinterim2").prop('checked',data.parinterim2[0].isinterim2);
                         $("#mission_parordre2").prop('checked',data.parinterim2[0].isparorodre2);
                         $("#nominterim_mission2").text(data.parinterim2[0].nom+" "+data.parinterim2[0].prenom);
-    
+                        $("#nominterim_val_mission2").val(data.parinterim2[0].matricule);
                     }
                    
 
@@ -192,15 +193,23 @@ $(document).ready(function() {
 
 
 function savemission(){
-   var structure_id=$("#mission_structure_id").val();
+
+    var isinterim1 =$("#mission_parinterim1").is(":checked");
+    var isinterim2=$("#mission_parinterim2").is(":checked");
+    var isordre1=$("#mission_parordre1").is(":checked");
+    var isordre2=$("#mission_parordre1").is(":checked");
+    var interiname1=document.getElementById('nominterim_val_mission1').value ;
+    var interiname2=$("#nominterim_val_mission2").value;
+    
+    var structure_id=$("#mission_structure_id").val();
     var objetmission=$("#objetmission").val();
     var datedepart=$("#datedebut").val();
     var datefin=$("#datefin").val();
     var vehiculemission=$("#immat_id").val();
     var chefmission=$("#chef_mission").val();
     var chauffeurmission=$("#conducteur_mission").val();
-    var hebergement=$("#hebergement_id").val();
-    var transport=$("#transport_id").val();
+    var hebergement=$("#hebergement_id option:selected").val();
+    var transport=$("#transport_id option:selected").val();
     var lieux_mission=[];
     var membremission=[];
     var token=$('#token').val();
@@ -210,8 +219,12 @@ function savemission(){
    
     for (var i=1;i<tablelieumision.rows.length;i++) {
         let row = tablelieumision.rows[i]
-        let col = row.cells[0]
-         lieux_mission.push(col.innerHTML);
+        let col1 = row.cells[0].innerHTML;
+        let col2=row.cells[1].innerHTML;
+        let col3=row.cells[1].innerHTML;
+        var ligne=col1+"/"+col2+"/"+col3;
+        
+         lieux_mission.push(ligne);
      }
 
      var tablemembremission=document.getElementById("agent_id_mission");
@@ -238,14 +251,25 @@ function savemission(){
              transport:transport,
              lieux_mission:lieux_mission,
              membremission:membremission,
+             isinterim1:isinterim1,
+             isinterim2:isinterim2,
+             isordre1:isordre1,
+             isordre2:isordre2,
+             interiname1:interiname1,
+             interiname2:interiname2,
              "_token": token
         }
     }).done(function(data){
         
             console.log(data);
+
+            var loc=window.location
+            var adresse=loc.protocol+"//"+loc.hostname+":"+loc.port+"/display-reporting-mission/"+data;
+            
+            window.open(adresse, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
        
     });
-
+ 
 
 }
     

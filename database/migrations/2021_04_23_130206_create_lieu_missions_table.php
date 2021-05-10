@@ -15,7 +15,9 @@ class CreateLieuMissionsTable extends Migration
     {
         Schema::create('lieu_missions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("libellelieu");
+            $table->string("region");
+            $table->string('province',255)->nullable()->default('text');
+            $table->string('commune', 255)->nullable()->default('text');
             $table->string("created_by");
             $table->string("update_by");
             $table->timestamps();

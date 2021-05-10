@@ -114,6 +114,13 @@ Route::post('/filter-commune',[App\Http\Controllers\MissioninterneController::cl
 Route::get('/filter-agent-mission',[App\Http\Controllers\MissioninterneController::class, 'filteragent']);
 Route::get('/filter-strucutre-mission',[App\Http\Controllers\MissioninterneController::class, 'filtrestructuremission']);
 Route::post('/save-mission',[App\Http\Controllers\MissioninterneController::class, 'store']);
+Route::get('/display-reporting-mission/{id}',[App\Http\Controllers\MissioninterneController::class, 'displayordremission']);
+
+Route::get('/verified-doublons/',[App\Http\Controllers\MissioninterneController::class, 'verifiedoublon']);
+
+Route::get('/diplay-annexe/',[App\Http\Controllers\MissioninterneController::class, 'annexe']);
+
+
 
 
 
