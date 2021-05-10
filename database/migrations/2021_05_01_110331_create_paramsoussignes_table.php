@@ -14,7 +14,7 @@ class CreateParamsoussignesTable extends Migration
     public function up()
     {
         Schema::create('paramsoussignes', function (Blueprint $table) {
-            $table->$table->bigIncrements('id');
+            $table->bigIncrements('id');
             $table->string('decret', 255)->nullable()->default('text');
             $table->string('soussigne', 255)->nullable()->default('text');
         });
