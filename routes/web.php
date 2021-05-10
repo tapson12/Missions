@@ -121,9 +121,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/filter-agent-mission',[App\Http\Controllers\MissioninterneController::class, 'filteragent']);
     Route::post('/filter-province',[App\Http\Controllers\MissioninterneController::class, 'filterprovince']);
     Route::post('/filter-commune',[App\Http\Controllers\MissioninterneController::class, 'filtercommune']);
-   
-   
-    
+
+
+
     Route::get('/users',[App\Http\Controllers\UsermanagerController::class, 'index']);
     Route::get('/register-user-form',[App\Http\Controllers\UsermanagerController::class, 'create']);
     Route::post('/register-user',[App\Http\Controllers\UsermanagerController::class, 'store']);
@@ -131,14 +131,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/reset-password-by-admin/{id}',[App\Http\Controllers\UsermanagerController::class, 'displaypasswordupdate']);
     Route::get('/delete-user/{id}',[App\Http\Controllers\UsermanagerController::class, 'destroy']);
 
-    
-    
+
+
 });
 
 
 
-<<<<<<< HEAD
-=======
 Route::post('/filter-structure',[App\Http\Controllers\MissioninterneController::class, 'filterstructure']);
 Route::post('/filter-province',[App\Http\Controllers\MissioninterneController::class, 'filterprovince']);
 Route::post('/filter-commune',[App\Http\Controllers\MissioninterneController::class, 'filtercommune']);
@@ -155,6 +153,5 @@ Route::get('/diplay-annexe/',[App\Http\Controllers\MissioninterneController::cla
 
 
 
->>>>>>> 475e0f53a1a09cbfe4009f7cad814565944e14b0
 
 
